@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set +x
 docker login ${DOCKER_HOST} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
+cd ${APPLICATION_PATH}
 docker build -t ${DOCKER_IMAGE_NAME} .
 docker push ${DOCKER_IMAGE_NAME}
 ls
