@@ -4,4 +4,5 @@ docker login ${DOCKER_HOST} --username ${DOCKER_USERNAME} --password ${DOCKER_PA
 cd ${APPLICATION_PATH}
 docker build -t ${DOCKER_IMAGE_NAME} .
 docker push ${DOCKER_IMAGE_NAME}
+ls
 cd ${APPLICATION_PATH}
