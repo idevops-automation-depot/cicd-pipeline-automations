@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set +x
+systemctl status docker
 docker login ${DOCKER_HOST} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
 cd ${APPLICATION_PATH}
 docker build -t test .
