@@ -6,6 +6,9 @@ service docker start
 
 echo "Docker Host: ${DOCKER_HOST}"
 
+export DOCKER_HOST_EXTERNAL="$DOCKER_HOST"
+export DOCKER_HOST="tcp://localhost:2375"
+
 cd ${APPLICATION_PATH}
 
 # Build Test and Main Image
@@ -14,7 +17,7 @@ docker build -t ${DOCKER_IMAGE_NAME} .
 
 
 # Login to Remote Repository and Push
-docker login ${DOCKER_HOST} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
+docker login ${DOCKER_HOST_EXTERNAL} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
 docker push test
 ls
 cd ${APPLICATION_PATH}
