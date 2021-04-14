@@ -3,6 +3,7 @@ set +x
 
 # Start the Docker Daemon
 service docker status
+ls -la /var/run/docker.sock
 service docker start
 sleep 60
 echo "Docker Host: ${DOCKER_HOST}"
