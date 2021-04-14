@@ -2,6 +2,7 @@
 set +x
 
 # Start the Docker Daemon
+sudo service docker status
 service docker start
 sleep 60
 echo "Docker Host: ${DOCKER_HOST}"
