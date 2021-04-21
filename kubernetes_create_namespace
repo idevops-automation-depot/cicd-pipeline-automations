@@ -1,0 +1,10 @@
+#!/usr/bin/
+set +x
+
+check_if_namespace_exists=`kubectl get namespaces | grep ${APP_NAMESPACE} | grep -v grep`
+if [ -z "${check_if_namespace_exists}" ]; then
+    echo "Namespace Doesn't Exist Install"
+    kubectl create namespace ${APP_NAMESPACE}
+else
+    echo "Namespace Exists"
+fi
