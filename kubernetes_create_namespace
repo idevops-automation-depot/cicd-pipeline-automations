@@ -1,0 +1,9 @@
+#!/usr/bin/
+set +x
+
+if kubectl get namespaces ${APP_NAMESPACE} | grep 'Running\|Completed' ;
+then
+print "namespace already exists"
+else
+kubectl create namespace ${APP_NAMESPACE}
+fi
