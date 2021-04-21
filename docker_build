@@ -4,6 +4,7 @@ set +x
 # Start the Docker Daemon
 service docker status
 ls -la /var/run/docker.sock
+ps aux | grep "docker"
 service docker start
 whoami
 
