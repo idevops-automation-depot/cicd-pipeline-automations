@@ -5,7 +5,7 @@ set +x
 service docker status
 ls -la /var/run/docker.sock
 service docker start
-echo whoami
+whoami
 
 sleep 60
 echo "Docker Host: ${DOCKER_HOST}"
