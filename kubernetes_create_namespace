@@ -1,9 +1,0 @@
-#!/usr/bin/
-set +x
-
-if kubectl get namespaces  | grep 'Running\|Completed' ;
-then
-print "namespace already exists"
-else
-kubectl create namespace 
-fi
