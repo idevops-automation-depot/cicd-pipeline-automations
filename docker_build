@@ -2,7 +2,7 @@
 set +x
 
 # Start the Docker Daemon
-chown idevopsio:docker /var/run/docker.sock
+sudo chown idevopsio:docker /var/run/docker.sock
 service docker status
 ls -la /var/run/docker.sock
 service docker start
