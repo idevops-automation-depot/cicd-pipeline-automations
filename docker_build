@@ -4,21 +4,17 @@ set +x
 # Start the Docker Daemon
 service docker status
 ls -la /var/run/docker.sock
-ps aux | grep "docker"
 service docker start
-whoami
-
 sleep 60
 echo "Docker Host: ${DOCKER_HOST}"
-
 export DOCKER_HOST_EXTERNAL="$DOCKER_HOST"
 export DOCKER_HOST="tcp://127.0.0.1:2375"
 
 cd ${APPLICATION_PATH}
 
 # Build Test and Main Image
-docker build -t test .
-docker build -t ${DOCKER_IMAGE_NAME} .
+docker build -v /var/run.docker.sock -t test .
+docker build -v /var/run.docker.sock -t ${DOCKER_IMAGE_NAME} .
 
 
 # Login to Remote Repository and Push
