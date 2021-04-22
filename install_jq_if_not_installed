@@ -5,7 +5,7 @@ set +x
 if ! [ -x "$(command -v jq --version)" ]; then
 # install if it doesn't
     echo "JQ Doesn't Exist - Install"
-    apt-get install -y jq
+    sudo apt-get install -y jq
 else
 # jq exists
     echo "JQ Exists"
