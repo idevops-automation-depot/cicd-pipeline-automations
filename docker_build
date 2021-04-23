@@ -20,9 +20,9 @@ cd ${APPLICATION_PATH}
 
 # Build Test and Main Image
 echo "test"
-docker build -v /var/run.docker.sock -t test .
+docker build -t test .
 echo "main"
-docker build -v /var/run.docker.sock -t ${DOCKER_IMAGE_NAME} .
+docker build -t ${DOCKER_IMAGE_NAME} .
 
 
 # Login to Remote Repository and Push
