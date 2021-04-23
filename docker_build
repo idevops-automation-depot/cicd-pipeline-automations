@@ -14,8 +14,7 @@ service docker status
 service docker start
 sleep 60
 service docker status
-echo "stats here"
-stat -c %a /var/run/docker.sock
+docker daemon-reload
 cd ${APPLICATION_PATH}
 
 # Build Test and Main Image
