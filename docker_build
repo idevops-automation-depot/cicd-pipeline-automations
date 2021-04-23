@@ -5,17 +5,18 @@ set +x
 #sudo chown idevopsio:docker /var/run/docker.sock
 
 ls -la /var/run/docker.sock
-
+chmod 777 /var/run/docker.sock
 echo "Docker Host: ${DOCKER_HOST}"
 export DOCKER_HOST_EXTERNAL="$DOCKER_HOST"
 export DOCKER_HOST="tcp://127.0.0.1:2375"
-
+echo "reloading"
+systemctl daemon-reload
 service docker status
 service docker start
 sleep 60
 service docker status
 echo "reloading"
-docker daemon-reload
+systemctl daemon-reload
 cd ${APPLICATION_PATH}
 
 # Build Test and Main Image
