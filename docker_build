@@ -14,6 +14,7 @@ service docker status
 service docker start
 sleep 60
 service docker status
+echo "reloading"
 docker daemon-reload
 cd ${APPLICATION_PATH}
 
