@@ -1,0 +1,6 @@
+#!/usr/bin/
+set +x
+
+${YAML_NAME}=$1
+
+kubectl delete -f $1

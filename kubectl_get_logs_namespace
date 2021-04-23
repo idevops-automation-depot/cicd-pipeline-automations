@@ -1,0 +1,6 @@
+#!/usr/bin/
+set +x
+
+${NAMESPACE}=$1
+
+kubectl logs $1

@@ -1,0 +1,6 @@
+#!/usr/bin/
+set +x
+
+${STATEFULSET_NAME}=$1
+
+kubectl delete statefulsets $1

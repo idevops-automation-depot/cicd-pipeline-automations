@@ -1,0 +1,7 @@
+#!/usr/bin/
+set +x
+
+${NAMESPACE}=$1
+${FILENAME}=$2
+
+kubectl create -n $2 -f $1 
