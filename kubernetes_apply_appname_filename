@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set +x
+
+${FILENAME}=$1
+${APP_NAME}=$2 #not sure what to do with app name
+${APP_NAMESPACE}=$3
+
+
+sed -i 's/metadata:\r  name:/metadata:\r  name:${APP_NAME}/' ${FILENAME}
+
+kubectl apply -f $1 - n $3
+
+
+
+# Usage # ./script.sh ${FILENAME} ${APP_NAME}
