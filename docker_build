@@ -19,7 +19,9 @@ service docker status
 cd ${APPLICATION_PATH}
 
 # Build Test and Main Image
+echo "test"
 docker build -v /var/run.docker.sock -t test .
+echo "main"
 docker build -v /var/run.docker.sock -t ${DOCKER_IMAGE_NAME} .
 
 
