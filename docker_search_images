@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set +x
+
+SEARCH_FOR_IMAGE=$1
+
+docker image ls | awk -v var="$SEARCH_FOR_IMAGE" 'NR==1; $0 ~ var'

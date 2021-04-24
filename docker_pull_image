@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set +x
+
+REPO=$1
+IMAGE=$2
+TAG=$3
+
+# Pull image with 1 argument
+# Pull from repo with 2
+
+if [ $# -eq 1 ]; then
+    docker pull $1
+elif [ $# -eq 2 ]; then
+    docker pull $REPO/$IMAGE
+else
+    docker pull $REPO/$IMAGE:$TAG
+fi
+
+echo $test
