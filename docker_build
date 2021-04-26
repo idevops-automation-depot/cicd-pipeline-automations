@@ -2,8 +2,8 @@
 set +x
 
 # Start the Docker Daemon
-#sudo chown idevopsio:docker /var/run/docker.sock
-chmod +777 /var/run/docker.sock
+
+
 ls -la /var/run/docker.sock
 
 echo "Docker Host: ${DOCKER_HOST}"
@@ -14,13 +14,14 @@ service docker status
 service docker start
 sleep 60
 service docker status
-echo "reloading"
-systemctl daemon-reload
+
+echo "Usernames:"
+cat /etc/passwd | cut -d: -f1
+
+
 cd ${APPLICATION_PATH}
 
 # Build Test and Main Image
-docker ps
-docker images list
 
 echo "test"
 docker build -t test .
