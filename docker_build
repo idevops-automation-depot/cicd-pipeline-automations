@@ -5,18 +5,18 @@ set +x
 
 dockerd --debug \
   --tls=false \
-  --host unix:///var/run/docker.sock
+  --host tcp://127.0.0.1:2376
 
 ls -la /var/run/docker.sock
 
 echo "Docker Host: ${DOCKER_HOST}"
 export DOCKER_HOST_EXTERNAL="$DOCKER_HOST"
-export DOCKER_HOST="tcp://127.0.0.1:2375"
+export DOCKER_HOST="tcp://127.0.0.1:2376"
 
-service docker status
+#service docker status
 #service docker start
 sleep 60
-service docker status
+#service docker status
 
 
 
