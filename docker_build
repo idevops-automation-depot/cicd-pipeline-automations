@@ -4,9 +4,7 @@ set +x
 # Start the Docker Daemon
 
 dockerd --debug \
-  --tls=true \
-  --tlscert=/var/docker/server.pem \
-  --tlskey=/var/docker/serverkey.pem \
+  --tls=false \
   --host unix:///var/run/docker.sock
 
 ls -la /var/run/docker.sock
