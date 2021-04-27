@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set +x
+
+# Connect a container to a network
+# 1st argument is the network, and 2nd argument is the container
+# Additional 3rd argument for IP
+
+NETWORK_NAME=$1
+CONTAINER=$2
+IP=$3
+
+if [ $# -eq 3 ]; then
+    docker network connect --ip $IP $NETWORK_NAME $CONTAINER
+else
+    docker network connect $NETWORK_NAME $CONTAINER
+fi
