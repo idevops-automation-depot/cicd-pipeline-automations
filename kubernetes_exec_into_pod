@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set +x
+
+POD_NAME=$1
+APP_NAMESPACE=$2
+
+kubectl exec -it -n $APP_NAMESPACE $POD_NAME bash
