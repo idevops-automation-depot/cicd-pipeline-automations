@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set +x
+APP_NAME=$1
+
+docker image push ${APP_NAME}

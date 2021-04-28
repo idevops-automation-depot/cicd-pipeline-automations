@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set +x
+
+APP_NAME=$1
+
+curl -s https://ci-tools.anchore.io/inline_scan-v0.6.0 | bash -s ${APP_NAME}
