@@ -2,28 +2,16 @@
 set +x
 
 # Start the Docker Daemon
-#sudo chown idevopsio:docker /var/run/docker.sock
-
-ls -la /var/run/docker.sock
-
-echo "Docker Host: ${DOCKER_HOST}"
-export DOCKER_HOST_EXTERNAL="$DOCKER_HOST"
-export DOCKER_HOST="tcp://127.0.0.1:2375"
-
-service docker status
-service docker start
-sleep 60
-service docker status
+export DOCKER_HOST="unix:///var/run/docker.sock"
 
 cd ${APPLICATION_PATH}
 
 # Build Test and Main Image
-docker build -v /var/run.docker.sock -t test .
-docker build -v /var/run.docker.sock -t ${DOCKER_IMAGE_NAME} .
 
+docker build -t test .
+docker build -t ${DOCKER_IMAGE_NAME} .
 
 # Login to Remote Repository and Push
 docker login ${DOCKER_HOST_EXTERNAL} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
 docker push test
-ls
 cd ${APPLICATION_PATH}
