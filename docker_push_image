@@ -4,7 +4,6 @@ set +x
 Docker_USERNAME=$1
 DOCKER_PASSWORD=$2
 
-print env
 
 docker login ${DOCKER_IMAGE_REPOSITORY} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
 docker image push ${DOCKER_IMAGE_NAME}
