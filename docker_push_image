@@ -7,4 +7,4 @@ DOCKER_PASSWORD=$2
 
 
 docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD} ${DOCKER_IMAGE_REPOSITORY}
-docker image push ${DOCKER_IMAGE_NAME}
+docker push ${DOCKER_IMAGE_NAME}
