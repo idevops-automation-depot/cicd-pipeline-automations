@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set +x
 
-docker pull {DOCKER_IMAGE_NAME}
+docker pull ${DOCKER_IMAGE_NAME}
 curl -s https://ci-tools.anchore.io/inline_scan-v0.6.0 | bash -s ${DOCKER_IMAGE_NAME}
