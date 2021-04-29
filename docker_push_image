@@ -8,4 +8,4 @@ APP_NAME=$4
 VERSION=$5
 
 docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD} ${DOCKER_REGISTRY_URL}
-docker image push ${DOCKER_REGISTRY_URL}/${APP_NAME}:${VERSION}
+docker image push local/${APP_NAME}:${VERSION}
