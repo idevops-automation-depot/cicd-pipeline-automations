@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 set +x
 
-APP_NAME=$1
-TAG=$2
-DOCKER_HOST=$3
+DOCKER_IMAGE_NAME=$1
 
 
-curl -s https://ci-tools.anchore.io/inline_scan-v0.6.0 | bash -s ${DOCKER_HOST}/${APP_NAME}:${TAG}
+curl -s https://ci-tools.anchore.io/inline_scan-v0.6.0 | bash -s ${DOCKER_IMAGE_NAME}
