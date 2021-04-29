@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set +x
-DOCKER_USERNAME=$1
+
 # Start the Docker Daemon
 export DOCKER_HOST="unix:///var/run/docker.sock"
 
@@ -9,5 +9,5 @@ cd ${APPLICATION_PATH}
 # Build Test and Main Image
 
 docker build -t test .
-docker build -t ${DOCKER_USERNAME}/${DOCKER_IMAGE_NAME} .
+docker build -t ${DOCKER_IMAGE_NAME} .
 cd ${APPLICATION_PATH}
