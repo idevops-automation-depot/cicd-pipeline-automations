@@ -1,4 +1,4 @@
-#!/usr/bin/
+#!/usr/bin/env bash
 set +x
 
 check_if_namespace_exists=`kubectl get namespaces | grep ${APP_NAMESPACE} | grep -v grep`
