@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set +x
 
-Docker_USERNAME=$1
+DOCKER_USERNAME=$1
 DOCKER_PASSWORD=$2
 
 
