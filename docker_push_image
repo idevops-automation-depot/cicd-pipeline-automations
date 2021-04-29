@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set +x
-APP_NAME=$1
+
+Docker_USERNAME=$1
+DOCKER_PASSWORD=$2
+
 
 docker login ${DOCKER_IMAGE_REPOSITORY} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
-docker image push ${APP_NAME}:${VERSION}
+docker image push ${DOCKER_IMAGE_NAME}
