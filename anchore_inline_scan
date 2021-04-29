@@ -2,5 +2,8 @@
 set +x
 
 APP_NAME=$1
+TAG=$2
+DOCKER_HOST=$3
 
-curl -s https://ci-tools.anchore.io/inline_scan-v0.6.0 | bash -s ${APP_NAME}
+
+curl -s https://ci-tools.anchore.io/inline_scan-v0.6.0 | bash -s ${DOCKER_HOST}/${APP_NAME}:${TAG}
