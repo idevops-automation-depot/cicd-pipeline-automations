@@ -5,5 +5,5 @@ DOCKER_USERNAME=$1
 DOCKER_PASSWORD=$2
 
 
-docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD} ${DOCKER_HOST}
+docker login --username ${DOCKER_USERNAME} --password-stdin ${DOCKER_PASSWORD} ${DOCKER_HOST}
 docker image push ${DOCKER_IMAGE_NAME}
