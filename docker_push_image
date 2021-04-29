@@ -8,5 +8,5 @@ APP_NAME=$4
 VERSION=$5
 
 
-winpty docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD} ${DOCKER_REGISTRY_URL}
+docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD} ${DOCKER_REGISTRY_URL}
 docker image push local/${APP_NAME}:${VERSION}
