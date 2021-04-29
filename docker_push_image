@@ -7,5 +7,8 @@ DOCKER_REGISTRY_URL=$3
 APP_NAME=$4
 VERSION=$5
 
-docker login --username ${DOCKER_USERNAME} --password ${DOCKER_REGISTRY_URL}
+printenv | grep "^DOCKER_PASSWORD=" | cut -d"=" -f2- | cat > password.txt | docker login --username ${DOCKER_USERNAME} --password-stdin ${DOCKER_REGISTRY_URL}
+
+cat password.txt
+
 docker image push local/${APP_NAME}:${VERSION}
