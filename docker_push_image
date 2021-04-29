@@ -2,4 +2,5 @@
 set +x
 APP_NAME=$1
 
-docker image push ${APP_NAME}
+docker login ${DOCKER_IMAGE_REPOSITORY} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
+docker image push ${APP_NAME}:${VERSION}
