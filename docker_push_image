@@ -2,8 +2,8 @@
 set +x
 
 DOCKER_USERNAME=$1
-DOCKER_PASSWORD=$2
+DOCKER_PASSWORD=$2x
 
 
-docker login ${DOCKER_IMAGE_REPOSITORY} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
+docker login ${DOCKER_HOST} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
 docker image push ${DOCKER_IMAGE_NAME}
