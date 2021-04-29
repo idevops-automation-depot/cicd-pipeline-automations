@@ -9,5 +9,5 @@ r = http.request('GET','{vault_dns}{vault_path}'.format(vault_dns=os.environ["VA
 vars_return = json.loads(r.data.decode('utf-8'))["data"]["data"]
 temp_secrets = open("tmp_secrets", "w")
 for var in vars_return:
-        temp_secrets.write("export {key}={values} \n".format(key=var, values=vars_return[var]))
+        temp_secrets.write("export {key}='{values}' \n".format(key=var, values=vars_return[var]))
 temp_secrets.close()
