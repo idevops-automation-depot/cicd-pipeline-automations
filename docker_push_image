@@ -6,5 +6,5 @@ DOCKER_PASSWORD=$2
 #DOCKER_REGISTRY_URL=$3
 
 
-docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD} idevopsio.azurecr.io
-docker image push ${APP_NAME}:${VERSION}
+docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD} ${DOCKER_IMAGE_REPOSITORY}
+docker image push ${DOCKER_IMAGE_NAME}
