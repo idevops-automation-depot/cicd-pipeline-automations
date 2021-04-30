@@ -1,19 +1,9 @@
 #!/usr/bin/env bash
 set +x
 
-#DOCKER_USERNAME=$1
-#DOCKER_PASSWORD=$2
-#DOCKER_REGISTRY_URL=$3
-#DOCKER_IMAGE_REPOSITORY=$3
-#APP_NAME=$4
-#VERSION=$5
+DOCKER_USERNAME=$1
+DOCKER_PASSWORD=$2
+DOCKER_REGISTRY_URL=$3
 
-printenv
-echo ${APP_NAME}
-echo ${VERSION}
-echo ${DOCKER_USERNAME}
-echo ${DOCKER_PASSWORD}
-echo ${DOCKER_REGISTRY_URL}
-
-docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD} ${DOCKER_REGISTRY_URL}
-docker push ${DOCKER_REGISTRY_URL}/${APP_NAME}:${VERSION}
+docker login --username $1 --password $2 $3
+docker push ${DOCKER_IMAGE_NAME}
