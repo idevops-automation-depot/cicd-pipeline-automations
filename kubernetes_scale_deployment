@@ -6,4 +6,4 @@ SCALE_TO_AMOUNT=$2
 APP_NAMESPACE=$3
 
 
-kubectl scale deployment -n $APP_NAMESPACE --replicas=$SCALE_TO_AMOUNT $DEPLOYMENT_NAME
+kubectl scale deployment -n $APP_NAMESPACE --replicas=$SCALE_TO_AMOUNT $DEPLOYMENT_NAME --kubeconfig=./kubeconfig

@@ -5,4 +5,4 @@ ${CLUSTERROLE_NAME}=$1
 ${RESOURCE_TYPE}=$2
 ${RESOURCEGROUP_NAME}=$3
 
-kubectl create clusterrole $1 --verb=get,list,watch --resource=$2 [--resource-name=$3] [--dry-run=none]
+kubectl create clusterrole $1 --verb=get,list,watch --resource=$2 [--resource-name=$3] [--dry-run=none] --kubeconfig=./kubeconfig

@@ -7,9 +7,9 @@ LABEL_VALUE=$2
 APP_NAMESPACE=$3
 
 
-#POD_NAME=$(kubectl get pod -l $APP_NAME -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' )
+#POD_NAME=$(kubectl get pod -l $APP_NAME -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' --kubeconfig=./kubeconfig)
 
-POD_NAME=$(kubectl get pods -l $LABEL_KEY=$LABEL_VALUE -o jsonpath="{.items[0].metadata.name}" -n $APP_NAMESPACE)
+POD_NAME=$(kubectl get pods -l $LABEL_KEY=$LABEL_VALUE -o jsonpath="{.items[0].metadata.name}" -n $APP_NAMESPACE --kubeconfig=./kubeconfig)
 echo $POD_NAME
 
 

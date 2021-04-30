@@ -3,4 +3,4 @@ set +x
 
 APP_NAMESPACE=$1
 
-kubectl get all -n $APP_NAMESPACE
+kubectl get all -n $APP_NAMESPACE --kubeconfig=./kubeconfig

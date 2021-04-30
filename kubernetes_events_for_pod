@@ -3,4 +3,4 @@ set +x
 APP_NAMESPACE=$1
 POD_NAME=$(kubernetes_get_pod_name $LABEL_KEY $LABEL_VALUE $APP_NAMESPACE)
 
-kubectl describe pod ${POD_NAME} -n ${APP_NAMESPACE}
+kubectl describe pod ${POD_NAME} -n ${APP_NAMESPACE} --kubeconfig=./kubeconfig

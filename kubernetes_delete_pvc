@@ -3,4 +3,4 @@ set +x
 APP_NAME=$1
 APP_NAMESPACE=$2
 
-kubectl delete pvc ${APP_NAME} -n ${APP_NAMESPACE}
+kubectl delete pvc ${APP_NAME} -n ${APP_NAMESPACE} --kubeconfig=./kubeconfig

@@ -12,4 +12,4 @@ TARGET_PORT=$7
 
 POD_NAME=$(kubernetes_get_pod_name $LABEL_KEY $LABEL_VALUE $APP_NAMESPACE)
 echo Name of the Pod: $POD_NAME
-kubectl expose pod  $POD_NAME --name $APP_NAME --type=$SERVICE_TYPE --port=$PORT --target-port=$TARGET_PORT -n ${APP_NAMESPACE}
+kubectl expose pod  $POD_NAME --name $APP_NAME --type=$SERVICE_TYPE --port=$PORT --target-port=$TARGET_PORT -n ${APP_NAMESPACE} --kubeconfig=./kubeconfig

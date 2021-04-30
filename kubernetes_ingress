@@ -8,4 +8,4 @@ SERVICE_TYPE=$3
 PORT=$4
 SERCERT=$5
 
-kubectl create ingress $APP_NAME --rule="$PATH=$SERVICE_TYPE:$PORT,tlS=$SERCERT"
+kubectl create ingress $APP_NAME --rule="$PATH=$SERVICE_TYPE:$PORT,tlS=$SERCERT" --kubeconfig=./kubeconfig

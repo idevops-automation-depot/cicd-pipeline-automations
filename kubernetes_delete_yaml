@@ -3,4 +3,4 @@ set +x
 
 ${YAML_NAME}=$1
 
-kubectl delete -f $1
+kubectl delete -f $1 --kubeconfig=./kubeconfig
