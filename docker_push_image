@@ -8,5 +8,5 @@ DOCKER_IMAGE_REPOSITORY=$3
 APP_NAME=$4
 VERSION=$5
 
-docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD} ${DOCKER_IMAGE_REPOSITORY}
+docker login --username ${DOCKER_USERNAME} --password LnVjTjMvaG3MN9C/m8C6JxaTtLdWoQ3i ${DOCKER_IMAGE_REPOSITORY}
 docker image push local/${APP_NAME}:${VERSION}
