@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set +x
 
-DOCKER_USERNAME=$1
-DOCKER_PASSWORD=$2
-DOCKER_REGISTRY_URL=$3
+DOCKER_IMAGE_NAME=$1
 
-docker login --username $1 --password $2 $3
 docker push ${DOCKER_IMAGE_NAME}
