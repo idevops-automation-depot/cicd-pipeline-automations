@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set +x
+
+LABEL_KEY=$1
+LABEL_VALUE=$2
+APP_NAMESPACE=$3
+
+kubectl delete pods,services -l $LABEL_KEY=$LABEL_VALUE -n $APP_NAMESPACE
