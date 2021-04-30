@@ -10,8 +10,4 @@ cd ${APPLICATION_PATH}
 
 docker build -t test .
 docker build -t ${DOCKER_IMAGE_NAME} .
-
-# Login to Remote Repository and Push
-docker login ${DOCKER_HOST_EXTERNAL} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
-docker push test
 cd ${APPLICATION_PATH}
