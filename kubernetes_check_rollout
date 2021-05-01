@@ -5,7 +5,7 @@ APP_NAME=$1
 APP_NAMESPACE=$2
 DEPLOYMENT_TYPE=$3
 
-kubectl rollout status $DEPLOYMENT_TYPE/$APP_NAME -n ${APP_NAMESPACE} --kubeconfig=../kubeconfig
+kubectl rollout status $DEPLOYMENT_TYPE/$APP_NAME -n ${APP_NAMESPACE} --kubeconfig=./kubeconfig
 
 
 
