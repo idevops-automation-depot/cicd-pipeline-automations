@@ -6,6 +6,7 @@ APP_NAMESPACE=$2
 DEPLOYMENT_TYPE=$3
 
 kubectl rollout status -w $DEPLOYMENT_TYPE/$APP_NAME -n ${APP_NAMESPACE} --kubeconfig=../kubeconfig
+kubectl get events
 
 
 
