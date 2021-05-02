@@ -6,7 +6,8 @@ filename=$2
 APP_NAMESPACE=$3
 
 cd $APPLICATION_PATH
-ls
+
+ls -d */
 echo "APPLICATION PATH"
 #kubectl create secret generic regcred \
 #  --from-file=.dockerconfigjson=<path/to/.docker/config.json> \
