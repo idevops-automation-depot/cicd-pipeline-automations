@@ -5,10 +5,13 @@ APP_NAME=$1
 filename=$2
 APP_NAMESPACE=$3
 
+cd ..
+ls -d */
+echo "above APPLICATION PATH"
 cd $APPLICATION_PATH
 
-ls -p -d .. | grep '/$'
-echo "above APPLICATION PATH"
+ls -d */
+echo "APPLICATION PATH"
 #kubectl create secret generic regcred \
 #  --from-file=.dockerconfigjson=<path/to/.docker/config.json> \
 #  --type=kubernetes.io/dockerconfigjson
