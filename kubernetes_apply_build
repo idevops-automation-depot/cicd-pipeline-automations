@@ -5,7 +5,7 @@ APP_NAME=$1
 filename=$2
 APP_NAMESPACE=$3
 
-cd ..
+cd ../../
 ls -d */
 echo "above APPLICATION PATH"
 cd $APPLICATION_PATH
