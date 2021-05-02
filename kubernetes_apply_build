@@ -8,7 +8,7 @@ APP_NAMESPACE=$3
 ls -d */
 echo "where am i"
 cd ~/.docker
-ls -d */
+ls
 echo "above APPLICATION PATH"
 cd $APPLICATION_PATH
 
