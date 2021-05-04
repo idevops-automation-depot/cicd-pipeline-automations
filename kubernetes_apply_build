@@ -7,8 +7,4 @@ APP_NAMESPACE=$3
 
 cd $APPLICATION_PATH
 
-ls -lah
-
 kubectl apply -n ${APP_NAMESPACE} -f $filename --kubeconfig=../kubeconfig
-
-kubectl get events
