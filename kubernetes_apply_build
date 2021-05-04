@@ -8,5 +8,3 @@ APP_NAMESPACE=$3
 cd $APPLICATION_PATH
 
 kubectl apply -n ${APP_NAMESPACE} -f $filename --kubeconfig=../kubeconfig
-
-
