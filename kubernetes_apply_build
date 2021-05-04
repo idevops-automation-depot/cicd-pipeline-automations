@@ -5,19 +5,7 @@ APP_NAME=$1
 filename=$2
 APP_NAMESPACE=$3
 
-kubectl delete secret -n ${APP_NAMESPACE} secret-${APP_NAME}-docker
-
-kubectl create secret docker-registry secret-${APP_NAME}-docker \
---docker-server=${DOCKER_REGISTRY_URL} \
---docker-username=${DOCKER_USERNAME} \
---docker-password="${DOCKER_PASSWORD}" \
---docker-email=admin@idevops.io
-
 cd $APPLICATION_PATH
-
-ls -d */
-echo "in APPLICATION PATH now"
-
 
 kubectl apply -n ${APP_NAMESPACE} -f $filename --kubeconfig=../kubeconfig
 
