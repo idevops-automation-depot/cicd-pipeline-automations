@@ -5,7 +5,9 @@ APP_NAME=$1
 filename=$2
 APP_NAMESPACE=$3
 
-kubectl create secret docker-registry regcred --docker-server=${DOCKER_REGISTRY_URL} --docker-username=DOCKER_USERNAME --docker-password=${DOCKER_PASSWORD} --docker-email=admin@idevops.io
+kubectl delete secret -n ${APP_NAMESPACE} secret-worldofpew-docker
+
+kubectl create secret docker-registry regcred --docker-server=${DOCKER_REGISTRY_URL} --docker-username=${DOCKER_USERNAME} --docker-password=${DOCKER_PASSWORD} --docker-email=admin@idevops.io
 cd $APPLICATION_PATH
 
 ls -d */
