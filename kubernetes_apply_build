@@ -5,13 +5,11 @@ APP_NAME=$1
 filename=$2
 APP_NAMESPACE=$3
 
-cd ~/.docker
-ls
-cat config.json
-kubectl create secret generic regcred \
-  --from-file=.dockerconfigjson=<~/.docker/config.json> \
-  --type=kubernetes.io/dockerconfigjson
 
+kubectl create secret docker-registry secret-${APP_NAME}-docker \
+  --docker-username=${DOCKER_USERNAME} \
+  --docker-password=${DOCKER_PASSWORD} \
+  --docker-email=admin@idevops.io
 cd $APPLICATION_PATH
 
 ls -d */
