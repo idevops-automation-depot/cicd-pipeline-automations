@@ -19,7 +19,7 @@ echo "sonar.host.url=http://localhost:9000" >> sonar-project.properties
 echo "sonar.login=admin" >> sonar-project.properties
 echo "sonar.password=admin" >> sonar-project.properties
 #echo "sonar.exclusions=html/**, latext/**, za_proxy_report.html" >> sonar-project.properties
-echo "sonar.projectBaseDir=${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops-world-of-pew" >> sonar-project.properties
+echo "sonar.projectBaseDir=${SYSTEM_DEFAULTWORKINGDIRECTORY}" >> sonar-project.properties
 
 echo "Check Sonar Properties"
 cat sonar-project.properties
@@ -28,11 +28,11 @@ cat sonar-project.properties
 #echo "Create Project"
 #python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonarqube_create_project.py
 
-cp sonar-project.properties ../../
+
 
 echo "Execute Scan, please ensure sonar-project.properties is set properly."
 #relies on sonar-project.properties in root project folder
-docker run -t --network=host -v ${SYSTEM_DEFAULTWORKINGDIRECTORY}../../:/root/src/ zaquestion/sonarqube-scanner
+docker run -t --network=host -v ${SYSTEM_DEFAULTWORKINGDIRECTORY}:/root/src/ zaquestion/sonarqube-scanner
 
 #echo "Parse and Display Issues from Sonar Cuber Report"
 #python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/check_project_status.py
