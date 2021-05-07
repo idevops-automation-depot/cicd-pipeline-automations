@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set +x
+
+
+
+echo "Ensure Sonar is Running."
+#sonarstart
+
+echo "Setup Sonar Properties File"
+# Required metadata
+
+echo "Scanning Source Directory: $SOURCE_DIRECTORY"
+echo "sonar.projectKey=org.sonarqube:${APP_NAME}" > sonar-project.properties 
+echo "sonar.projectName=${APP_NAME}" >> sonar-project.properties 
+echo "sonar.projectVersion=1.0" >> sonar-project.properties 
+echo "sonar.language=py" >> sonar-project.properties 
+echo "sonar.sourceEncoding=UTF-8" >> sonar-project.properties
+echo "sonar.host.url=http://localhost:9000" >> sonar-project.properties
+echo "sonar.login=admin" >> sonar-project.properties
+echo "sonar.password=admin" >> sonar-project.properties
+#echo "sonar.exclusions=html/**, latext/**, za_proxy_report.html" >> sonar-project.properties
+echo "sonar.projectBaseDir=$SOURCE_DIRECTORY" >> sonar-project.properties
+
+echo "Check Sonar Properties"
+cat sonar-project.properties
+
+echo "Create Project"
+python3 ../$LIBRARY_FOLDER/libraries/sonarqube_create_project.py
+
+cp sonar-project.properties ../../
+
+echo "Execute Scan, please ensure sonar-project.properties is set properly."
+#relies on sonar-project.properties in root project folder
+docker run -t --network=host -v  $(pwd)/../../:/root/src/ zaquestion/sonarqube-scanner 
+
+echo "Parse and Display Issues from Sonar Cuber Report"
+python ../$LIBRARY_FOLDER/libraries/check_project_status.py
+
+
+
+
+
+
+
+
+
