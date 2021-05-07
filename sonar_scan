@@ -23,7 +23,7 @@ echo "sonar.projectBaseDir=${SYSTEM_DEFAULTWORKINGDIRECTORY}" >> sonar-project.p
 
 echo "Check Sonar Properties"
 cat sonar-project.properties
-
+ls
 
 #echo "Create Project"
 #python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonarqube_create_project.py
