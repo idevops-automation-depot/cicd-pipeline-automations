@@ -32,7 +32,7 @@ ls
 
 echo "Execute Scan, please ensure sonar-project.properties is set properly."
 #relies on sonar-project.properties in root project folder
-docker run -t --network=host -v ${SYSTEM_DEFAULTWORKINGDIRECTORY}:/root/src/ zaquestion/sonarqube-scanner
+docker run -t --network=host -v ${SYSTEM_DEFAULTWORKINGDIRECTORY}:/root/src/ zaquestion/sonarqube-scanner ls /root/src
 
 #echo "Parse and Display Issues from Sonar Cuber Report"
 #python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/check_project_status.py
