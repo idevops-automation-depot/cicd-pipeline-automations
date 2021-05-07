@@ -1,13 +1,14 @@
+#!/usr/bin/env python
 import requests 
 import pprint
 import json
 from requests.auth import HTTPBasicAuth
 
 
-#TOKEN= 'c70a28c91663d7c91a863e61586831f5ed08e620'
-URL = 'http://localhost:9000/api/projects/create?project=idevops-crmservice&name=crmservice'
+
+URL = 'http://localhost:9000/api/projects/create?project=org.sonarqube:' +["APP_NAME"] + '&name=' + ["APP_NAME"]
 
 
-get_request = requests.post(URL, auth=HTTPBasicAuth('admin','amy'))
+get_request = requests.post(URL, auth=HTTPBasicAuth('admin','admin'))
 
 pprint.pprint(get_request.json())
