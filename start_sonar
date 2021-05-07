@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set +x
 
 is_sonar_running=`docker ps -a | grep "sonarqube"`
