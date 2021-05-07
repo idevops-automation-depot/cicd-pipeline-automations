@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import requests 
 import pprint
 import json
@@ -7,12 +8,12 @@ from prettytable import PrettyTable
 
 table = PrettyTable()
 # must be one of: [INFO, MINOR, MAJOR, CRITICAL, BLOCKER]
-#TOKEN= 'c70a28c91663d7c91a863e61586831f5ed08e620'
+
 
 info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 
 for info_type_items in info_type:
-    URL = 'http://localhost:9000/api/issues/search?pageSize100&severities='+ info_type_items +'&componentKeys=org.sonarqube:' + APP_NAME
+    URL = 'http://localhost:9000/api/issues/search?pageSize100&severities='+ info_type_items +'&componentKeys=org.sonarqube:' + ["APP_NAME"]
 
     get_request = requests.get(URL, auth=HTTPBasicAuth('admin','admin'))
 
