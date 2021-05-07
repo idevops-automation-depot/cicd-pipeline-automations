@@ -2,6 +2,7 @@
 import requests 
 import pprint
 import json
+import os
 from requests.auth import HTTPBasicAuth
 from prettytable import PrettyTable
 
@@ -13,7 +14,7 @@ table = PrettyTable()
 info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 
 for info_type_items in info_type:
-    URL = 'http://localhost:9000/api/issues/search?pageSize100&severities='+ info_type_items +'&componentKeys=org.sonarqube:' + ["APP_NAME"]
+    URL = 'http://localhost:9000/api/issues/search?pageSize100&severities='+ info_type_items +'&componentKeys=org.sonarqube:' + os.environ["APP_NAME"]
 
     get_request = requests.get(URL, auth=HTTPBasicAuth('admin','admin'))
 
