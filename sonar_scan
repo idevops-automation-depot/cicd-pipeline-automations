@@ -23,7 +23,7 @@ echo "sonar.projectBaseDir=/root/src/" >> sonar-project.properties
 
 echo "Check Sonar Properties"
 cat sonar-project.properties
-echo "$(pwd)"
+ls $(SYSTEM_DEFAULTWORKINGDIRECTORY)
 
 #echo "Create Project"
 #python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonarqube_create_project.py
@@ -32,7 +32,7 @@ cp sonar-project.properties
 
 echo "Execute Scan, please ensure sonar-project.properties is set properly."
 #relies on sonar-project.properties in root project folder
-docker run -t --network=host -v  $(pwd):/root/src/ zaquestion/sonarqube-scanner ls /root ls /root/src
+#docker run -t --network=host -v  $(pwd):/root/src/ zaquestion/sonarqube-scanner ls /root ls /root/src
 
 #echo "Parse and Display Issues from Sonar Cuber Report"
 #python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/check_project_status.py
