@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set +x
 
-
+export PATH=/root/miniconda3/bin:${PATH}
 
 echo "Ensure Sonar is Running."
 #sonarstart
@@ -25,7 +25,7 @@ echo "Check Sonar Properties"
 cat sonar-project.properties
 
 echo "Create Project"
-python3 ../$LIBRARY_FOLDER/libraries/sonarqube_create_project.py
+python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonarqube_create_project.py
 
 cp sonar-project.properties ../../
 
@@ -34,7 +34,7 @@ echo "Execute Scan, please ensure sonar-project.properties is set properly."
 docker run -t --network=host -v  $(pwd)/../../:/root/src/ zaquestion/sonarqube-scanner 
 
 echo "Parse and Display Issues from Sonar Cuber Report"
-python ../$LIBRARY_FOLDER/libraries/check_project_status.py
+python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/check_project_status.py
 
 
 
