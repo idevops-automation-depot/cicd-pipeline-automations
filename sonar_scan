@@ -29,7 +29,7 @@ ls _idevops-world-of-pew/
 #echo "Create Project"
 #python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonarqube_create_project.py
 
-cp sonar-project.properties ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops-world-of-pew
+#cp sonar-project.properties ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops-world-of-pew
 
 
 echo "Execute Scan, please ensure sonar-project.properties is set properly."
