@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set +x
 
-is_sonar_running=`docker ps -a | grep "sonarqube"`
+is_sonar_running=`docker ps | grep "sonarqube"`
 
 if [ -z "$is_sonar_running" ]; then
     echo "Is Sonar Running: ${is_sonar_running}"
