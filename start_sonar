@@ -47,5 +47,6 @@ until [ "$current_status" == "    window.serverStatus = 'UP';" ]; do
     sleep 5
 done
 
+curl http://127.0.0.1:9000
 echo "Sonar Cube is up and running and reporting started."
 
