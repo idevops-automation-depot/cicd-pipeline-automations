@@ -11,19 +11,19 @@ else
     echo "Sonar already running, check responding."
 fi
 
-attempt_counter=0
-max_attempts=25
+#attempt_counter=0
+#max_attempts=25
 
-until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:9000); do
-    if [ ${attempt_counter} -eq ${max_attempts} ];then
-      echo "Max attempts reached"
-      exit 1
-    fi
+#until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:9000); do
+#    if [ ${attempt_counter} -eq ${max_attempts} ];then
+#      echo "Max attempts reached"
+#      exit 1
+#    fi
 
-    printf '.'
-    attempt_counter=$(($attempt_counter+1))
-    sleep 5
-done
+#    printf '.'
+#    attempt_counter=$(($attempt_counter+1))
+#    sleep 5
+#done
 
 echo "Sonar Cube is Up and Ready."
 echo "Wait for Sonar Ready Status"
