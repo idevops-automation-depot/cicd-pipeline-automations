@@ -31,6 +31,8 @@ echo "Wait for Sonar Ready Status"
 current_status=`curl http://127.0.0.1:9000 --silent | grep "window.serverStatus = 'UP'"`
 echo "current_status: $current_status"
 
+curl http://127.0.0.1:9000 --silent | grep "window.serverStatus = 'UP'"
+
 until [ "$current_status" == "    window.serverStatus = 'UP';" ]; do
     current_status=`curl http://127.0.0.1:9000 --silent | grep "window.serverStatus = 'UP'"`
     echo "current_status: $current_status"
