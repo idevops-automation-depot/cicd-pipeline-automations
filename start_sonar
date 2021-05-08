@@ -6,7 +6,7 @@ is_sonar_running=`docker ps -a | grep "sonarqube"`
 if [ -z "$is_sonar_running" ]; then
     echo "Is Sonar Running: ${is_sonar_running}"
     echo "Sonar no running start sonar."
-    docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+    docker run -d --name sonarqube -p 9000:9000 sonarqube
 else
     echo "Sonar already running, check responding."
 fi
@@ -31,7 +31,7 @@ echo "Wait for Sonar Ready Status"
 current_status=`curl http://127.0.0.1:9000 --silent | grep "window.serverStatus = 'UP'"`
 echo "current_status: $current_status"
 
-curl http://127.0.0.1:9000 --silent | grep "window.serverStatus = 'UP'"
+
 
 until [ "$current_status" == "    window.serverStatus = 'UP';" ]; do
     current_status=`curl http://127.0.0.1:9000 --silent | grep "window.serverStatus = 'UP'"`
