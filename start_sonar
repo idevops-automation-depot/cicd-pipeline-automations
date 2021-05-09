@@ -13,21 +13,14 @@ fi
 
 
 
-echo "check with curl on 9000 "
+echo "check"
 
-curl 172.17.0.0
-curl 172.17.0.0/16
+kubectl get pod -o wide
 
-echo "check with curl on 9092 "
-curl localhost:9092
 
-echo "check with curl on http://127.0.0.1:9000"
-curl http://172.17.0.0/16:9000
-curl http://172.17.0.0/16:9092
 
-echo "check with curl on http://127.0.0.1:9092"
-curl http://172.17.0.0:9000
-curl http://172.17.0.0:9092
+
+
 #attempt_counter=0
 #max_attempts=25
 
