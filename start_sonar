@@ -17,7 +17,9 @@ echo "check"
 docker ps 
 #docker logs sonarqube
 
-curl 127.0.0.1:9001
+curl 8.9.0.43852
+
+curl 127.0.0.1:9092/sonar
 
 
 
