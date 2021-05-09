@@ -17,36 +17,36 @@ echo "check"
 
 kubectl get pod -o wide
 
-curl 10.240.0.142:9000
+curl http://10.240.0.142:9000
 
 
 
 
 
-#attempt_counter=0
-#max_attempts=25
+attempt_counter=0
+max_attempts=25
 
-#until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:9000); do
-#    if [ ${attempt_counter} -eq ${max_attempts} ];then
-#      echo "Max attempts reached"
-#      exit 1
-#    fi
+until $(curl --output /dev/null --silent --head --fail http://10.240.0.142:9000); do
+    if [ ${attempt_counter} -eq ${max_attempts} ];then
+      echo "Max attempts reached"
+      exit 1
+    fi
 
-#    printf '.'
-#    attempt_counter=$(($attempt_counter+1))
-#    sleep 5
-#done
+    printf '.'
+    attempt_counter=$(($attempt_counter+1))
+    sleep 5
+done
 
 echo "Sonar Cube is Up and Ready."
 echo "Wait for Sonar Ready Status"
 
-current_status=`curl http://127.0.0.1:9000 --silent | grep "window.serverStatus = 'UP'"`
+current_status=`curl http://10.240.0.142:9000 --silent | grep "window.serverStatus = 'UP'"`
 echo "current_status: $current_status"
 
 
 
 until [ "$current_status" == "    window.serverStatus = 'UP';" ]; do
-    current_status=`curl http://127.0.0.1:9000 --silent | grep "window.serverStatus = 'UP'"`
+    current_status=`curl http://10.240.0.142:9000 --silent | grep "window.serverStatus = 'UP'"`
     echo "current_status: $current_status"
 
     if [ ${attempt_counter} -eq ${max_attempts} ];then
@@ -59,6 +59,6 @@ until [ "$current_status" == "    window.serverStatus = 'UP';" ]; do
     sleep 5
 done
 
-curl http://127.0.0.1:9000
+curl http://10.240.0.142:9000
 echo "Sonar Cube is up and running and reporting started."
 
