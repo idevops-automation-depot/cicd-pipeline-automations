@@ -17,9 +17,8 @@ echo "check"
 docker ps 
 #docker logs sonarqube
 
-curl 8.9.0.43852
 
-curl 127.0.0.1:9092/sonar
+curl http://localhost:9000
 
 
 
