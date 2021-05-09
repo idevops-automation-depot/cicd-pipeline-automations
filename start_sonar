@@ -17,6 +17,8 @@ echo "check"
 
 kubectl get pod -o wide
 
+curl 10.240.0.142:9000
+
 
 
 
