@@ -19,6 +19,12 @@ curl localhost:9000
 
 echo "check with curl on 9092 "
 curl localhost:9092
+
+echo "check with curl on http://127.0.0.1:9000"
+curl http://127.0.0.1:9000
+
+echo "check with curl on http://127.0.0.1:9092"
+curl http://127.0.0.1:9092
 #attempt_counter=0
 #max_attempts=25
 
