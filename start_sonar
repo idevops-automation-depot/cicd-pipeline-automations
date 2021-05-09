@@ -15,8 +15,8 @@ fi
 
 echo "check with curl on 9000 "
 
-curl 172.17. 0.0
-curl 172.17. 0.0/16
+curl 172.17.0.0
+curl 172.17.0.0/16
 
 echo "check with curl on 9092 "
 curl localhost:9092
