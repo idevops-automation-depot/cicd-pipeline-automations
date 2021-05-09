@@ -11,6 +11,11 @@ else
     echo "Sonar already running, check responding."
 fi
 
+
+
+echo "check with docker ps"
+
+docker ps 
 #attempt_counter=0
 #max_attempts=25
 
