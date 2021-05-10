@@ -30,7 +30,7 @@ cp sonar-project.properties ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops-world-of-
 echo $(pwd)
 ls
 
-ls /_idevops-world-of-pew
+ls _idevops-world-of-pew
 
 #echo "Create Project"
 #python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonarqube_create_project.py
