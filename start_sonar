@@ -13,11 +13,10 @@ fi
 
 
 
-echo "check"
-docker ps 
+
 #docker logs sonarqube
 
-curl 127.0.0.1:9000
+
 
 #kubectl get svc --all-namespaces -o wide
 
