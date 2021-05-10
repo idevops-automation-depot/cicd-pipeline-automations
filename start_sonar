@@ -18,9 +18,11 @@ docker ps
 #docker logs sonarqube
 
 
-kubectl get svc --all-namespaces -o wide
+#kubectl get svc --all-namespaces -o wide
 
-curl  10.0.59.80:80
+kubectl -n production get ingress
+echo "split"
+kubectl -n production get services
 
 
 
