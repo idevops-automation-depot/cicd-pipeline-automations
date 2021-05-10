@@ -20,8 +20,11 @@ docker ps
 
 #kubectl get svc --all-namespaces -o wide
 
+echo "get pod name"
+kubectl get pods -n sonarqube
+echo "get pod ingress"
 kubectl -n production get ingress
-echo "split"
+echo "get service"
 kubectl -n production get services
 
 
