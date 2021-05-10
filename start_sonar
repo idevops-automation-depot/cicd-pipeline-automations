@@ -18,10 +18,7 @@ docker ps
 #docker logs sonarqube
 
 
-curl http://localhost:9000
-
-curl http://localhost:9092
-
+kubectl get svc --all-namespaces -o wide
 
 
 
