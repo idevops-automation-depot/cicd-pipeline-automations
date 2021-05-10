@@ -20,7 +20,7 @@ docker ps
 
 kubectl get svc --all-namespaces -o wide
 
-
+curl  10.0.59.80
 
 
 
