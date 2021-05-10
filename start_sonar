@@ -13,19 +13,19 @@ fi
 
 
 
-echo "check"
-docker ps 
+#echo "check"
+#docker ps 
 #docker logs sonarqube
 
 
 #kubectl get svc --all-namespaces -o wide
 
-echo "get pod name"
-kubectl get pods --all-namespaces  
-echo "get pod ingress"
-kubectl -n production get ingress
-echo "get service"
-kubectl -n production get services
+#echo "get pod name"
+#kubectl get pods --all-namespaces  
+#echo "get pod ingress"
+#kubectl -n production get ingress
+#echo "get service"
+#kubectl -n production get services
 
 
 
