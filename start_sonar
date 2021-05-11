@@ -6,7 +6,7 @@ is_sonar_running=`docker ps | grep "sonarqube"`
 if [ -z "$is_sonar_running" ]; then
     echo "Is Sonar Running: ${is_sonar_running}"
     echo "Sonar no running start sonar."
-    docker run -d --name sonarqube -p 127.0.0.1:9000:9000 -p 9092:9092 sonarqube
+    docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
 else
     echo "Sonar already running, check responding."
 fi
