@@ -19,7 +19,7 @@ echo "sonar.host.url=http://localhost:9000" >> sonar-project.properties
 echo "sonar.login=admin" >> sonar-project.properties
 echo "sonar.password=admin" >> sonar-project.properties
 #echo "sonar.exclusions=html/**, latext/**, za_proxy_report.html" >> sonar-project.properties
-echo "sonar.projectBaseDir=${SYSTEM_DEFAULTWORKINGDIRECTORY}" >> sonar-project.properties
+echo "sonar.projectBaseDir=${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries" >> sonar-project.properties
 
 echo "Check Sonar Properties"
 cat sonar-project.properties
