@@ -1,18 +1,6 @@
 #!/usr/bin/env bash
 set +x
 
-REPO=$1
-IMAGE=$2
-TAG=$3
+DOCKER_IMAGE_NAME=$1
 
-# Pull image from docker library with 1 argument. Please attach the tag to the argument
-# Pull from repo with 2 or 3 arguments, 1st argument being the repo, and 2nd argument being the image. 
-# You can attach the tag onto the image or as a 3rd argument.
-
-if [ $# -eq 1 ]; then
-    docker pull $1
-elif [ $# -eq 2 ]; then
-    docker pull $REPO/$IMAGE
-else
-    docker pull $REPO/$IMAGE:$TAG
-fi
+docker pull ${DOCKER_IMAGE_NAME}
