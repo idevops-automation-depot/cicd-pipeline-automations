@@ -25,7 +25,7 @@ echo "Check Sonar Properties"
 cat sonar-project.properties
 
 
-cp sonar-project.properties ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops-world-of-pew
+#cp sonar-project.properties ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops-world-of-pew
 
 echo $(pwd)
 ls
