@@ -30,7 +30,7 @@ cat sonar-project.properties
 echo "Execute Scan, please ensure sonar-project.properties is set properly."
 #relies on sonar-project.properties in root project folder
 
-docker run -t --network=host  -v $(pwd):/root/codesrc/ abeltranmeza/sonarqube-scanner:latest ls /root/codesrc
+docker run -t --network=host  -v $(pwd):/root/codesrc/ abeltranmeza/sonarqube-scanner:latest 
 
 #echo "Parse and Display Issues from Sonar Cuber Report"
 #python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/check_project_status.py
