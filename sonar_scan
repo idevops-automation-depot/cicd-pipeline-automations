@@ -22,7 +22,9 @@ echo "sonar.password=admin" >> sonar-project.properties
 echo "sonar.projectBaseDir=${SYSTEM_DEFAULTWORKINGDIRECTORY}" >> sonar-project.properties
 
 echo "Check Sonar Properties"
+chmod 777 sonar-project.properties
 cat sonar-project.properties
+
 
 
 
