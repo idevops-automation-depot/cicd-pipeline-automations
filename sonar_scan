@@ -4,7 +4,7 @@ set +x
 export PATH=/root/miniconda3/bin:${PATH}
 
 echo "Ensure Sonar is Running."
-sonar_start
+start_sonar
 
 echo "Setup Sonar Properties File"
 # Required metadata
