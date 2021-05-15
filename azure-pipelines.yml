@@ -1,0 +1,79 @@
+# Deploy to Azure Kubernetes Service
+# Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+# trigger:
+# - master
+
+# resources:
+# - repo: self
+
+variables:
+
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: '3333ca5b-f436-4d2a-ba32-4f9084ec568d'
+  imageRepository: 'github.com/Alexis-Beltran-Meza/devopsubuntu.git'
+  containerRegistry: 'hub.docker.com/r/abeltranmeza/devopsubuntu'
+  dockerfilePath: '**/Dockerfile'
+  tag: '$(Build.BuildId)'
+#  imagePullSecret: 'idevopsio1083c5b3-auth'
+  vmImageName: 'ubuntu-latest'
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool: Default
+     # vmImage: $(vmImageName)
+    steps:
+#    - task: CmdLine@2
+#      displayName: Test
+#      inputs:
+#        scriptSource: inline
+#        script: |
+#          pwd
+#          # '**/Dockerfile'
+#          # cat /azp/agent/_work/5/s/Dockerfile
+#          cat /*/Dockerfile
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(TAG)
+    - upload: manifests
+      artifact: manifests
+
+- stage: Deploy
+  dependsOn: Build
+  displayName: Deploy stage
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy
+    pool: Default
+    #  vmImage: $(vmImageName)
+    environment: 'production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+#          - task: CmdLine@2
+#            displayName: Setup Python Replace Variables
+#            inputs:
+#              scriptSource: inline
+#              script: |
+#                apt-get install -y python3.7
+#                python -m pip install -U pip
+#                python -m pip install --upgrade pip setuptools wheel
+#                pip install urllib3
+#                pip install --upgrade urllib3
+#                export VAULT_TOKEN=$(VAULT_TOKEN)
+#                export APP=$(APP)
+#                export VAULT_VERSION=$(VAULT_VERSION)
+#                export ENVIRONMENT=$(ENVIRONMENT)
+#                python $(Pipeline.Workspace)/manifests/vars_replace.py
+#                cat deployment.yml
