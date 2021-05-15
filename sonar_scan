@@ -4,7 +4,7 @@ set +x
 export PATH=/root/miniconda3/bin:${PATH}
 
 echo "Ensure Sonar is Running."
-#sonarstart
+sonarstart
 
 echo "Setup Sonar Properties File"
 # Required metadata
@@ -27,6 +27,7 @@ echo "sonar.projectBaseDir=/root/src/" >> sonar-project.properties
 echo "Check Sonar Properties"
 cat sonar-project.properties
 
+echo 
 #cp sonar-project.properties /_idevops-world-of-pew/sonar-project.properties
 #echo "Create Project"
 #python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonarqube_create_project.py
