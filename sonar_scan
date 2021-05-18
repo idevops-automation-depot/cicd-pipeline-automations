@@ -28,6 +28,9 @@ echo "sonar.projectBaseDir=/root/src/" >> sonar-project.properties
 echo "Check Sonar Properties"
 cat sonar-project.properties
 
+python -m pip install -U prettytable
+
+
 docker run -d --rm --name dummy -v sonarvolume:/root/src alpine tail -f /dev/null
 docker cp /azp/_work/r1/a/_idevops-world-of-pew dummy2:/root/src
 docker cp /azp/_work/r1/a/sonar-project.properties  dummy2:/root/src/sonar-project.properties
