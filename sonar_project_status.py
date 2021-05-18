@@ -14,7 +14,7 @@ table = PrettyTable()
 info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 
 for info_type_items in info_type:
-    URL = 'http://localhost:9000/api/issues/search?pageSize100&severities='+ info_type_items +'&componentKeys=org.sonarqube:' + os.environ["APP_NAME"]
+    URL = 'http://172.17.0.1:9000/api/issues/search?pageSize100&severities='+ info_type_items +'&componentKeys=org.sonarqube:' + os.environ["APP_NAME"]
 
     get_request = requests.get(URL, auth=HTTPBasicAuth('admin','admin'))
 
