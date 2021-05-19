@@ -2,7 +2,8 @@
 set +x
 
 APP_OR_SERVICE_NAME=$1
-PORT=$2
-APP_NAMESPACE=$3
+PORTFROM=$2
+PORTTO=$3
+APP_NAMESPACE=$4
 
-kubectl port-forward -n $APP_NAMESPACE $APP_OR_SERVICE_NAME $PORT --kubeconfig=./kubeconfig
+kubectl port-forward -n $APP_NAMESPACE $APP_OR_SERVICE_NAME $2:$3 --kubeconfig=./kubeconfig

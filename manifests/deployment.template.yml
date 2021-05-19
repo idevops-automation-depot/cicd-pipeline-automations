@@ -1,0 +1,339 @@
+--- # deployment microservice
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: -=APP_NAME=-
+  namespace: -=ENV_NAMESPACE=-
+spec:
+  replicas: -=REPLICAS=-
+  selector:
+    matchLabels:
+      app: -=APP_NAME=-
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+       maxUnavailable: -=MAX_AVAIL=-
+       maxSurge: -=MAX_SURGE=-
+  template:
+    metadata:
+      labels:
+        app: -=APP_NAME=-
+    spec:
+      containers:
+        - name: -=APP_NAME=-
+          image: -=CONTAINER_URL=-/idevops-=APP_NAME=-:-=TAG=-
+          imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              path: /api/v1/-=APP_NAME=-/customer_intake_form/
+              port: 80
+              httpHeaders:
+                - name: Authorization
+                  value: -=API_AUTH_BASIC_TOKEN=-
+            initialDelaySeconds: -=INITIAL_DELAY=-
+            failureThreshold: -=FAILURE_THRESHOLD=-
+            successThreshold: -=SUCCESS_THRESHOLD=-
+            periodSeconds: -=PERIOD_SECONDS=-
+          volumeMounts:
+          - name: -=APP_NAME=--config-map-volume
+            mountPath: /replace_files/
+          env:
+            - name: MYSQL_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: MYSQL_NAME
+            - name: MYSQL_URL
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: MYSQL_URL
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: MYSQL_USER
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: MYSQL_PASSWORD
+            - name: MICROSOFT_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: MICROSOFT_CLIENT_ID
+            - name: MICROSOFT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: MICROSOFT_SECRET_KEY
+            - name: NGINX_CONFIG_FILE_LOCATION
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: NGINX_CONFIG_FILE_LOCATION
+            - name: SWAGGER_INDEX_LOCATION
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: SWAGGER_INDEX_LOCATION
+            - name: BACKENDS_FILE_LOCATION
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: BACKENDS_FILE_LOCATION
+            - name: APP_TYPE
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: DJANGO_APP_TYPE
+            - name: LOG_LEVEL
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: LOG_LEVEL
+            - name: RABBITMQ_EXCHANGE_TYPE
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: RABBITMQ_EXCHANGE_TYPE
+            - name: RABBITMQ_EXCHANGE
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: RABBITMQ_EXCHANGE
+            - name: RABBITMQ_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: RABBITMQ_HOST
+            - name: RABBITMQ_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: RABBITMQ_PORT
+            - name: APP_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: APP_PORT
+            - name: APP_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: APP_NAME
+            - name: DJANGO_LOG_LEVEL
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: DJANGO_LOG_LEVEL
+            - name: NOTIFICATIONSERVICE_EXCHANGE
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: NOTIFICATIONSERVICE_EXCHANGE
+            - name: GOOGLE_OAUTH_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: GOOGLE_OAUTH_KEY
+            - name: GOOGLE_OAUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: -=APP_NAME=--secret
+                  key: GOOGLE_OAUTH_SECRET      
+          ports:
+            - name: httpapi
+              containerPort: -=APP_PORT=-
+            - name: http
+              containerPort: 80
+          resources:
+            requests:
+              memory: -=REQUEST_MEMORY=-
+              cpu: -=REQUEST_CPU=-
+      restartPolicy: Always
+      volumes:
+        - name: -=APP_NAME=--config-map-volume
+          configMap:
+            name: -=APP_NAME=--config-map
+
+--- # secret variables
+apiVersion: v1
+kind: Secret
+metadata:
+  name: -=APP_NAME=--secret
+  namespace: -=ENV_NAMESPACE=-
+type: Opaque
+stringData:
+  MICROSOFT_CLIENT_ID: '-=MICROSOFT_CLIENT_ID=-'
+  MICROSOFT_SECRET_KEY: '-=MICROSOFT_SECRET_KEY=-'
+  OAUTHLIB_RELAX_TOKEN_SCOPE: '-=OAUTHLIB_RELAX_TOKEN_SCOPE=-'
+  LOG_LEVEL: '-=LOG_LEVEL=-'
+  MYSQL_NAME: '-=MYSQL_NAME=-'
+  MYSQL_URL: '-=MYSQL_URL=-'
+  MYSQL_USER: '-=MYSQL_USER=-'
+  MYSQL_PASSWORD: '-=MYSQL_PASSWORD=-'
+  BACKENDS_FILE_LOCATION: '-=BACKENDS_FILE_LOCATION=-'
+  SWAGGER_INDEX_LOCATION: '-=SWAGGER_INDEX_LOCATION=-'
+  NGINX_CONFIG_FILE_LOCATION: '-=NGINX_CONFIG_FILE_LOCATION=-'
+  DJANGO_APP_TYPE: '-=DJANGO_APP_TYPE=-'
+  CONSUMER_APP_TYPE: '-=CONSUMER_APP_TYPE=-'
+  RABBITMQ_EXCHANGE_TYPE: '-=RABBITMQ_EXCHANGE_TYPE=-'
+  RABBITMQ_EXCHANGE: '-=RABBITMQ_EXCHANGE=-'
+  RABBITMQ_HOST: '-=RABBITMQ_HOST=-'
+  RABBITMQ_PORT: '-=RABBITMQ_PORT=-'
+  APP_PORT: '-=APP_PORT=-'
+  APP_NAME: '-=APP_NAME=-'
+  DJANGO_LOG_LEVEL: '-=DJANGO_LOG_LEVEL=-'
+  NOTIFICATIONSERVICE_EXCHANGE: '-=NOTIFICATIONSERVICE_EXCHANGE=-'
+  GOOGLE_OAUTH_KEY: '-=GOOGLE_OAUTH_KEY=-'
+  GOOGLE_OAUTH_SECRET: '-=GOOGLE_OAUTH_SECRET=-'
+
+--- #service
+apiVersion: v1
+kind: Service
+metadata:
+  name: -=APP_NAME=-
+  namespace: -=ENV_NAMESPACE=-
+spec:
+    type: ClusterIP
+    ports:
+    - name: http
+      port: -=APP_PORT=-
+    - name: httpp
+      port: 80
+    selector:
+        app: -=APP_NAME=-
+
+--- #ACMEIssuer
+acme:
+    email: -=ADMIN_EMAIL=-
+    preferredChain: ""
+    privateKeySecretRef:
+      name: idevopsio--=ENV_NAMESPACE=-
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+    - dns01:
+        route53:
+          accessKeyID: -=AWSB64AK=-
+          hostedZoneID: Z370FY5A2PDAE
+          region: us-east-1
+          secretAccessKeySecretRef:
+            key: -=AWSB64SK=-
+            name: issuer-aws-secret
+      selector:
+        dnsZones:
+        - -=DNS_ZONES=-
+--- #Ingress
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: idevopsio
+  namespace: -=ENV_NAMESPACE=-
+  annotations:
+    cert-manager.io/issuer: idevopsio--=ENV_NAMESPACE=-
+    kubernetes.io/ingress.class: nginx
+spec:
+  tls:
+  - hosts:
+    - -=DNS_ZONES=-
+    secretName: idevops
+  rules:
+  - host: -=DNS_ZONES=-
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: idevopsio--=ENV_NAMESPACE=-
+          servicePort: 80
+'''--- #nginx-ingress
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: G
+    meta.helm.sh/release-namespace: -=ENV_NAMESPACE=-
+  creationTimestamp: null
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app.kubernetes.io/instance: G
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: nginx-ingress
+    helm.sh/chart: nginx-ingress-0.7.1
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:meta.helm.sh/release-name: {}
+          f:meta.helm.sh/release-namespace: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:app.kubernetes.io/name: {}
+          f:helm.sh/chart: {}
+      f:spec:
+        f:externalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":80,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+          k:{"port":443,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2020-12-23T05:43:59Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:finalizers:
+          .: {}
+          v:"service.kubernetes.io/load-balancer-cleanup": {}
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-12-24T02:30:42Z"
+  name: nginx-ingress
+  selfLink: /api/v1/namespaces/-=ENV_NAMESPACE=-/services/nginx-ingress
+spec:
+  externalTrafficPolicy: Local
+  healthCheckNodePort: 32621
+  ports:
+  - name: http
+    nodePort: 31585
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    nodePort: 30761
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  selector:
+    app: nginx-ingress
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+''''
