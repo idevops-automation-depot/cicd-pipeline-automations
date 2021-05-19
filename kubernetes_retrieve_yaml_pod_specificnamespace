@@ -1,7 +1,7 @@
 #!/usr/bin/
 set +x
 
-${NAMESPACE}=$1
+${APP_NAMESPACE}=$1
 ${POD_NAME}=$2
 
 kubectl get pod -n $1 $2 -o yaml --kubeconfig=./kubeconfig
