@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set +x
 APP_NAMESPACE=$1
-label_key=$2
-label_value=$3
+LABEL_KEY=$2
+LABEL_VALUE=$3
 
 POD_NAME=$(kubernetes_get_pod_name $2 $3 $APP_NAMESPACE)
 
