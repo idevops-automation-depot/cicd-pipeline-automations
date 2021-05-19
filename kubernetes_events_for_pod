@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set +x
 APP_NAMESPACE=$1
-POD_NAME=$(kubernetes_get_pod_name $LABEL_KEY $LABEL_VALUE $APP_NAMESPACE)
+label_key=$2
+label_value=$3
+
+POD_NAME=$(kubernetes_get_pod_name $2 $3 $APP_NAMESPACE)
 
 kubectl describe pod ${POD_NAME} -n ${APP_NAMESPACE} --kubeconfig=./kubeconfig
