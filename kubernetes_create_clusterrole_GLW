@@ -6,4 +6,4 @@ ${RESOURCE_TYPE}=$2
 ${RESOURCEGROUP_NAME}=$3
 $verb=$4
 
-kubectl create clusterrole $1 --verb=$4 --resource=$2 [--resource-name=$3] --kubeconfig=./kubeconfig
+kubectl create clusterrole $1 --verb=$4 --resource=$2 --resource-name=$3 --kubeconfig=./kubeconfig
