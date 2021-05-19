@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+set +x
+
+export PATH=/root/miniconda3/bin:${PATH}
+
+echo "Ensure Sonar is Running."
+start_sonar
+
+echo "Setup Sonar Properties File"
+# Required metadata
+
+
+
+cat /etc/*release
+docker --version
+echo "Scanning Source Directory: ${SYSTEM_DEFAULTWORKINGDIRECTORY}"
+echo "sonar.projectKey=org.sonarqube:${APP_NAME}" > sonar-project.properties 
+echo "sonar.projectName=${APP_NAME}" >> sonar-project.properties 
+echo "sonar.projectVersion=1.0" >> sonar-project.properties 
+echo "sonar.language=py" >> sonar-project.properties 
+echo "sonar.sourceEncoding=UTF-8" >> sonar-project.properties
+echo "sonar.host.url=http://localhost:9000" >> sonar-project.properties
+echo "sonar.login=admin" >> sonar-project.properties
+echo "sonar.password=admin" >> sonar-project.properties
+#echo "sonar.exclusions=html/**, latext/**, za_proxy_report.html" >> sonar-project.properties
+echo "sonar.projectBaseDir=/root/src/" >> sonar-project.properties
+
+echo "Check Sonar Properties"
+cat sonar-project.properties
+
+python -m pip install -U prettytable
+
+
+docker run -d --rm --name dummy -v sonarvolume:/root/src alpine tail -f /dev/null
+docker cp /azp/_work/r1/a/_idevops-world-of-pew dummy:/root/src
+docker cp /azp/_work/r1/a/sonar-project.properties  dummy:/root/src/sonar-project.properties
+docker stop dummy
+
+echo "Create Project"
+python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonarqube_create_project.py
+
+echo "Execute Scan, please ensure sonar-project.properties is set properly."
+#relies on sonar-project.properties in root project folder
+
+docker run -t --network=host  -v sonarvolume:/root/src/ zaquestion/sonarqube-scanner 
+
+echo "Parse and Display Issues from Sonar Cuber Report"
+python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonar_project_status.py
+
+
+
+
+
+
+
+
+
