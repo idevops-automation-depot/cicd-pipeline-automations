@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set +x
 
-NETWORK=$1
+NETWORK_NAME=$1
 
-docker network rm $NETWORK
+docker network rm $NETWORK_NAME
