@@ -88,7 +88,7 @@ This library was created to expedite the deployment of CI/CD oriented environmen
 | kubernetes_search_pods | Uses `awk` to search for a given pod, and returns a list of matching results | `POD_NAME`, `APP_NAMESPACE` | `POD_NAME` *here* does not need to be the exact name |
 | kubernetes_search_services | Uses `awk` to search for a given service, and returns a list of matching results | `SERVICE_NAME`, `APP_NAMESPACE` | `SERVICE_NAME` *here* does not need to be the exact name |
 | kubernetes_show_all<br />_objects_in_a_namespace | Shows all the objects in a given namespace | `APP_NAMESPACE` |
-| start_sonar | Starts SonarQube | 
+| start_sonar | Checks if SonarQube is running, and runs SonarQube if it isn't | 
 | sonar_scan | Ensures SonarQube is running. Sets up the `sonar-project.properties` file. Calls `sonar_create_project.py` to make a project inside SonarQube, scans the files and then calls `sonar_project_status.py` to get a report in pretty table. | `SYSTEM_DEFAULT`<br />`WORKINGDIRECTORY`, `APP_NAME` | Will require the use of `install_conda` beforehand. |
 | sonarqube_create_project.py | Creates a project in SonarQube | | `APP_NAME` |
 | sonar_project_status.py | Uses API/issues to get a report from SonarQube | | `APP_NAME` |
