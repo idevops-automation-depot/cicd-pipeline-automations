@@ -3,7 +3,10 @@
 This library was created to expedite the deployment of CI/CD oriented environments in a highly customizable manner. These libraries will allow you to create various tasks and processes based upon your specific needs in a way that has been tested and confirmed functional to eliminate guesswork and abstract you from the problems of implementation.
 
 ## How to use
-
+- Guide
+    - Import the available Pipeline JSON into your own AZDO Pipeline.
+    - Create the necessary variables in vault to the values specific to your organization's needs.
+    - Run and deploy AZDO runners using available Kubernetes manifests.
 - Scripts
   - `Required Arguments` refers to the arguments needed to run said script *and* in which order to call the arguments.
     - Take docker_login as an example:
