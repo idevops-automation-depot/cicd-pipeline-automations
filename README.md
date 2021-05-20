@@ -96,8 +96,8 @@ This library was created to expedite the deployment of CI/CD oriented environmen
 | sonarqube_create_project.py | Creates a project in SonarQube | | `APP_NAME` |
 | sonar_project_status.py | Uses API/issues to get a report from SonarQube | | `APP_NAME` |
 | source_vault_secrets | Grabs variables in Vault and `export`s them as environment variables | | `SYSTEM_DEFAULT`<br />`WORKINGDIRECTORY` <br /> This script is also used to `export` extra variables for use in the pipeline. |
-| vault_to_env.py | The script used in `source_vault_secrets` to grab variables |
-| vault_variable_replacement.py | Replaces variables in the templated yaml: `/manifests/deployment.template.yml` and creates a `deployment.yml`. | | Syntax for variables in the template are formatted like: `-=APP_NAME=-`, and replaced with the Vault value of `APP_NAME` |
+| vault_to_env.py | The script used in `source_vault_secrets` to grab variables | | Azure pipeline variables `VAULT_DNS`, `VAULT_PATH`, and `VAULT_TOKEN` must be set up ahead of time for these scripts to function.|
+| vault_variable_replacement.py | Replaces variables in the templated yaml: `/manifests/deployment.template.yml` and creates a `deployment.yml`. | | Syntax for variables in the template are formatted like: `-=APP_NAME=-`, and replaced with the Vault value of `APP_NAME`. Azure pipeline variables `VAULT_DNS`, `VAULT_PATH`, and `VAULT_TOKEN` must be set up ahead of time for these scripts to function.|
 | template_variable_replacement | Used to call the `vault_variable_replacement.py` | |`SYSTEM_DEFAULT`<br />`WORKINGDIRECTORY` |
 
 ### Common Variable Descriptions
