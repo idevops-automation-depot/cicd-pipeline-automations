@@ -60,7 +60,7 @@ This library was created to expedite the deployment of CI/CD oriented environmen
 | kubectl_install | Installs kubectl | `LIBRARY_PATH` |
 | kubenetes_delete_stateful | Deletes a Kubernetes stateful set | `APP_NAME`, `APP_NAMESPACE` |
 | kubernetes_apply_build | Applies a Kubernetes manifest | `APP_NAME`, `filename`, `APP_NAMESPACE` |
-| kubernetes_background_proxycurl | Opens a tmux session to verify a Pod is running. If successful the script exits 1 | `APP_NAME` |
+| kubernetes_background_proxycurl | Starts a backgrounded Kubectl proxy in order to curl Elasticsearch deployed in Docker through the Kubernetes proxy running in TMUX. | `APP_NAME` |
 | kubernetes_check_rollout | Checks the rollout status of a Kubernetes deployment | `APP_NAME`, `APP_NAMESPACE`, `DEPLOYMENT_TYPE` |
 | kubernetes_create_clusterrole_GLW | Creates a Kubernetes cluster role for the provided resource name | `CLUSTERROLE_NAME`, `RESOURCE_TYPE`, `RESOURCEGROUP_NAME`, `verb` | The `verb` argument determines the [permissions](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) for the cluster role and the argument should be provided like: `get,list,watch`. `RESOURCE_TYPE` is the resource the rule is applied to, `RESOURCEGROUP_NAME` is the Resource in the white list that the rule applies to, repeat this flag for multiple items. [Documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-clusterrole-em-)
 | kubernetes_create_docker_secret | Deletes the existing Kubernetes Docker secret and creates a new secret | `APP_NAME`, `APP_NAMESPACE`, `key`, `value` | The `key`, `value` arguments are used to create the new secret key: value pair.
