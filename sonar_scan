@@ -11,15 +11,9 @@ echo "Setup Sonar Properties File"
 
 
 
-echo " "
-echo " "
-echo " "
-echo " "
-printenv
-echo $env:APP_NAME
-echo ${APP_NAME}
+
 echo "Scanning Source Directory: ${SYSTEM_DEFAULTWORKINGDIRECTORY}"
-echo "sonar.projectKey=org.sonarqube:" + $env:APP_NAME > sonar-project.properties 
+echo "sonar.projectKey=org.sonarqube:${APP_NAME}" > sonar-project.properties 
 echo "sonar.projectName=${APP_NAME}" >> sonar-project.properties 
 echo "sonar.projectVersion=1.0" >> sonar-project.properties 
 echo "sonar.language=py" >> sonar-project.properties 
@@ -37,7 +31,7 @@ python -m pip install -U prettytable
 
 
 docker run -d --rm --name dummy -v sonarvolume:/root/src alpine tail -f /dev/null
-docker cp /azp/_work/r1/a/_idevops-world-of-pew dummy:/root/src
+docker cp /azp/_work/r1/a/ dummy:/root/src
 docker cp /azp/_work/r1/a/sonar-project.properties  dummy:/root/src/sonar-project.properties
 docker stop dummy
 
