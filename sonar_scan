@@ -14,7 +14,7 @@ echo "Setup Sonar Properties File"
 cat /etc/*release
 docker --version
 echo "Scanning Source Directory: ${SYSTEM_DEFAULTWORKINGDIRECTORY}"
-echo "sonar.projectKey=org.sonarqube:${APP_NAME}" > sonar-project.properties 
+echo "sonar.projectKey=org.sonarqube:$APP_NAME" > sonar-project.properties 
 echo "sonar.projectName=${APP_NAME}" >> sonar-project.properties 
 echo "sonar.projectVersion=1.0" >> sonar-project.properties 
 echo "sonar.language=py" >> sonar-project.properties 
