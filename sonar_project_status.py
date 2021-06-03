@@ -19,9 +19,9 @@ for info_type_items in info_type:
     get_request = requests.get(URL, auth=HTTPBasicAuth('admin','admin'))
 
     data = get_request.json()
-    print(data)
+    
 
-#pprint.pprint(data)
+    pprint.pprint(data)
 
     issues = data["issues"]
 
