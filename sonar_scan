@@ -16,6 +16,8 @@ echo " "
 echo " "
 echo " "
 printenv
+echo $env:APP_NAME
+echo ${APP_NAME}
 echo "Scanning Source Directory: ${SYSTEM_DEFAULTWORKINGDIRECTORY}"
 echo "sonar.projectKey=org.sonarqube:" + $env:APP_NAME > sonar-project.properties 
 echo "sonar.projectName=${APP_NAME}" >> sonar-project.properties 
