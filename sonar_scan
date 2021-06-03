@@ -30,10 +30,10 @@ cat sonar-project.properties
 python -m pip install -U prettytable
 
 
-docker run -d --rm --name dummy -v sonarvolume:/root/src alpine tail -f /dev/null
-docker cp /azp/_work/r1/a/ dummy:/root/src
-docker cp /azp/_work/r1/a/sonar-project.properties  dummy:/root/src/sonar-project.properties
-docker stop dummy
+docker run -d --rm --name dummy2 -v sonarvolume:/root/src alpine tail -f /dev/null
+docker cp /azp/_work/r1/a/ dummy2:/root/src
+docker cp /azp/_work/r1/a/sonar-project.properties  dummy2:/root/src/sonar-project.properties
+docker stop dummy2
 
 echo "Create Project"
 python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonarqube_create_project.py
