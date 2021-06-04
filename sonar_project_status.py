@@ -52,4 +52,4 @@ for info_type_items in info_type:
     #    table.add_row(z)
     #    listfoo = []
     print(table)
-pprint.pprint(issues)
+#pprint.pprint(issues)
