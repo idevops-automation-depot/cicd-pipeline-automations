@@ -21,7 +21,7 @@ for info_type_items in info_type:
     data = get_request.json()
     
 
-    pprint.pprint(data)
+    #pprint.pprint(data)
 
     issues = data["issues"]
 
