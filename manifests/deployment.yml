@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: azdorunner
+  name: idevops-azdo-runner
   labels:
     app: azdorunner
 spec:
