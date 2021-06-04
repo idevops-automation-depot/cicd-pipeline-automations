@@ -42,7 +42,9 @@ for info_type_items in info_type:
     #print(header)
     print("total number of items " + rows + " for " + info_type_items )
     #print("total number of items " + str(len(listfoo)) + " for " + info_type_items )
+    print(header)
     table.field_names = header 
+    print(rows)
     table.add_row(rows)
     #for z in listfoo:
     #    print(z)
@@ -50,3 +52,4 @@ for info_type_items in info_type:
     #    table.add_row(z)
     #    listfoo = []
     print(table)
+pprint.pprint(data)
