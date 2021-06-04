@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azdorunner
+  labels:
+    app: azdorunner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azdorunner
+  template:
+    metadata:
+      labels:
+        app: azdorunner
+    spec:
+      containers:
+      - name: azdorunner
+        image: idevopsio/idevops-azdo-runner:v1
+        volumeMounts:
+          - mountPath: /var/run/docker.sock
+            name: docker-volume
+        env:
+          - name: AZP_URL
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_URL
+          - name: AZP_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_TOKEN
+          - name: AZP_POOL
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_POOL
+          - name: AZP_AGENT_NAME
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_AGENT_NAME
+        ports:
+        - containerPort: 80
+      volumes:
+        - hostPath:
+            path: /var/run/docker.sock
+            type: ""
+          name: docker-volume
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: azdorunner
+type: Opaque
+data:
+    AZP_URL: aHR0cHM6Ly9kZXYuYXp1cmUuY29tL2lEZXZPcHNpbw==
+    AZP_TOKEN: NHB1eXlicWUycWNtcW9zeXdjbmd3bGNsZjVnd3E2eGFzNG1ydmFhNHBveGdpN3N3czQzcQ==
+    AZP_POOL: aWRldm9wcy1hemRvLXJ1bm5lcnM=
+    AZP_AGENT_NAME: aWRldm9wc3VidW50dQ==
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: azserviceprincipal
+type: Opaque
+data:
+    AZ_APP_URL: OTc2YTM4ZTMtMTAwMS00NmRhLTkxY2QtYzA0NTQ1NmFmMGQy
+	AZ_CERT: R3JfOEpFMlhzbX5+QjcwM3V4NXlWa3lqN2NiX0xRR1ZPNg==
+	AZ_TENANT: NzUyYWU5NTItYjNhYi00YzIxLThhMzItNTllNmRkYmE0Yzdj
+
