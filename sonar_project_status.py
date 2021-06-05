@@ -43,7 +43,7 @@ for info_type_items in info_type:
     #print(header)
     #print("total number of items " + str(rows) + " for " + info_type_items )
     #print("total number of items " + str(len(listfoo)) + " for " + info_type_items )
-    print(header)
+    
     table.field_names = header 
     #print(rows)
     #table.add_row(rows)
