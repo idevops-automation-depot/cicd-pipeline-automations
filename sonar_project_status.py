@@ -50,7 +50,7 @@ for info_type_items in info_type:
     #for z in listfoo:
     #    table.add_row(z)
     #    listfoo = []
-    #print(table)
+    print(table)
 print("\n")
 print("\n")
 print("\n")
