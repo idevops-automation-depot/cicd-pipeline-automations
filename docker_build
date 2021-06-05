@@ -9,6 +9,6 @@ cd ${APPLICATION_PATH}
 
 # Build Test and Main Image
 
-docker build -t test .
-docker build -t ${DOCKER_IMAGE_NAME} .
+#docker build -t test .
+docker build -t ${DOCKER_IMAGE_NAME} https://hub.docker.com/r/idevopsio/idevops-azdo-runner
 cd ${APPLICATION_PATH}
