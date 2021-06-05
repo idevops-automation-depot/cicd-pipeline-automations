@@ -31,14 +31,14 @@ for info_type_items in info_type:
         
         break
 
-    #listfoo = []
+    listfoo = []
     for y in issues:
         item2 = y.values()
         rows = list(item2)
-        #listfoo.append(list(item2))
+        listfoo.append(list(item2))
         
 
-
+ 
     #print (listfoo)
     #print(header)
     #print("total number of items " + str(rows) + " for " + info_type_items )
@@ -46,10 +46,10 @@ for info_type_items in info_type:
     
     table.field_names = header 
     #print(rows)
-    table.add_row(rows)
-    #for z in listfoo:
-    #    table.add_row(z)
-    #    listfoo = []
+    #table.add_row(rows)
+    for z in listfoo:
+        table.add_row(z)
+        #listfoo = []
     print(table)
 print("\n")
 print("\n")
