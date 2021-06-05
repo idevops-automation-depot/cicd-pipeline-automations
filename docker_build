@@ -10,5 +10,7 @@ cd ${APPLICATION_PATH}
 # Build Test and Main Image
 
 docker build -t test .
+t="docker build -t $DOCKER_IMAGE_NAME ."
+echo $t
 docker build -t $DOCKER_IMAGE_NAME .
 cd ${APPLICATION_PATH}
