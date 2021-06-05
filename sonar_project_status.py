@@ -51,5 +51,11 @@ for info_type_items in info_type:
     #    table.add_row(z)
     #    listfoo = []
     print(table)
-#print(table)
+print("\n")
+print("\n")
+print("\n")
+print("\n")
+print("\n")
+print("\n")
+print(table)
 #pprint.pprint(issues)
