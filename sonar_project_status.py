@@ -29,7 +29,6 @@ for info_type_items in info_type:
         item = x.keys()
         header = (list(item))
         
-        break
 
     listfoo = []
     for y in issues:
