@@ -1,59 +1,51 @@
 --- 
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
-  labels: 
-    app: azdorunner
-  name: azdorunner
-spec: 
+metadata:
+  name: idevops-azdo-runner
+  labels:
+    app: idevops-azdo-runner
+spec:
   replicas: 1
-  selector: 
-    matchLabels: 
-      app: azdorunner
-  template: 
-    metadata: 
-      labels: 
-        app: azdorunner
-    spec: 
-      containers: 
-        - 
-          env: 
-            - 
-              name: AZP_URL
-              valueFrom: 
-                secretKeyRef: 
-                  key: AZP_URL
-                  name: azdorunner
-            - 
-              name: AZP_TOKEN
-              valueFrom: 
-                secretKeyRef: 
-                  key: AZP_TOKEN
-                  name: azdorunner
-            - 
-              name: AZP_POOL
-              valueFrom: 
-                secretKeyRef: 
-                  key: AZP_POOL
-                  name: azdorunner
-            - 
-              name: AZP_AGENT_NAME
-              valueFrom: 
-                secretKeyRef: 
-                  key: AZP_AGENT_NAME
-                  name: azdorunner
-          image: "idevopsio/idevops-azdo-runner:v1"
-          name: azdorunner
-          ports: 
-            - 
-              containerPort: 80
-          volumeMounts: 
-            - 
-              mountPath: /var/run/docker.sock
-              name: docker-volume
-      volumes: 
-        - 
-          hostPath: 
+  selector:
+    matchLabels:
+      app: idevops-azdo-runner
+  template:
+    metadata:
+      labels:
+        app: idevops-azdo-runner
+    spec:
+      containers:
+      - name: idevops-azdo-runner
+        image: idevopsio/idevops-azdo-runner:v1
+        volumeMounts:
+          - mountPath: /var/run/docker.sock
+            name: docker-volume
+        env:
+          - name: AZP_URL
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_URL
+          - name: AZP_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_TOKEN
+          - name: AZP_POOL
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_POOL
+          - name: AZP_AGENT_NAME
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_AGENT_NAME
+        ports:
+        - containerPort: 80
+      volumes:
+        - hostPath:
             path: /var/run/docker.sock
             type: ""
           name: docker-volume
