@@ -28,7 +28,7 @@ for info_type_items in info_type:
     for x in issues:
         item = x.keys()
         header = (list(item))
-        print(header)
+        
         break
 
     listfoo = []
@@ -48,8 +48,6 @@ for info_type_items in info_type:
     #print(rows)
     #table.add_row(rows)
     for z in listfoo:
-        print(z)
-        print("newline")
         table.add_row(z)
         listfoo = []
 print(table)
