@@ -17,8 +17,8 @@ def create_table(table, field_name, rows):
     #print(table)
     table = PrettyTable()
     table.field_names = field_name
-    print(len(field_name))
-    print(len(rows))
+    print(field_name)
+    print(rows)
     for row in rows:
         table.add_row(row)
     print(table)
