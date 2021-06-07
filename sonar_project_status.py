@@ -24,7 +24,8 @@ def create_table(table, field_name, rows):
     for row in rows:
         print("give me the lenght of this array")
         print(len(row))
-        table.add_row(row)
+        print(row)
+        #table.add_row(row)
     print(table)
 
 def info_type_issues(issue):
