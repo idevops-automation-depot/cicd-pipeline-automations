@@ -20,7 +20,8 @@ def create_table(table, field_name, rows):
     #print(field_name)
     print(rows)
     for row in rows:
-        print(row)
+        print("give me the lenght of this array")
+        print(len(row))
         table.add_row(row)
     print(table)
 
