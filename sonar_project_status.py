@@ -18,9 +18,9 @@ def create_table(table, field_name, rows):
     table = PrettyTable()
     table.field_names = field_name
     #print(field_name)
-    print("\n\n\n\n\n\n\n gotta check this one ")
-    print(len(rows[0]))
+    print(rows)
     for row in rows:
+        print(row)
         table.add_row(row)
     print(table)
 
@@ -52,14 +52,15 @@ def pull_values(issue):
     print(len(list1[0]))
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     return list1
-#for issue in info_type:
-if pull_keys('MAJOR') == None:
-    print("no " +issue +" issues found")
-else:
-    print("\n" + issue + " Page Report")
-    result1 = pull_keys(issue)
-    array_list = result1[0]
-    type_of_issue = result1[2]
-    result2 = pull_values(issue)
-    rows = result2
-    create_table(type_of_issue,array_list, rows)
+
+for issue in info_type:
+    if pull_keys(issue) == None:
+        print("no " +issue +" issues found")
+    else:
+        print("\n" + issue + " Page Report")
+        result1 = pull_keys(issue)
+        array_list = result1[0]
+        type_of_issue = result1[2]
+        result2 = pull_values(issue)
+        rows = result2
+        create_table(type_of_issue,array_list, rows)
