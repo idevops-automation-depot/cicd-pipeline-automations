@@ -66,7 +66,10 @@ for issue in info_type:
         type_of_issue = result1[1]
         result2 = pull_values(issue)
         rows = result2
-        for row in rows:
-            print(row)
-            print(len(row))
+        for a, r in zip(array_list, rows ):
+            print(len(a))
+            print(len(r))
+            print(a)
+            print(r)
+            print("\n\n\n")
         create_table(type_of_issue,array_list, rows)
