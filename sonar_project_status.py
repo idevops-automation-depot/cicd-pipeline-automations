@@ -22,7 +22,7 @@ def create_table(table, field_name, rows):
     print(table)
 
 def info_type_issues(issue):
-  URL = 'http://172.17.0.1:9000/api/issues/search?pageSize100&severities='+ str(info_type) +'&componentKeys=org.sonarqube:' + os.environ["APP_NAME"]
+  URL = 'http://172.17.0.1:9000/api/issues/search?pageSize100&severities='+ str(issue) +'&componentKeys=org.sonarqube:' + os.environ["APP_NAME"]
   get_request = requests.get(URL, auth=HTTPBasicAuth('admin','admin'))
   data = get_request.json()
   #pprint.pprint(data)
