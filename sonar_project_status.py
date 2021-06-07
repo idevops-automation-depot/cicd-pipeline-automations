@@ -16,7 +16,10 @@ info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 def create_table(table, field_name, rows, lengths):
     tablename = table + str(lengths)
     tablename = PrettyTable()
+    print("check this")
     print(field_name)
+    print(len(field_name))
+    print(len(rows))
     tablename.field_names = field_name
     #for row in rows:
     #    print(row)
