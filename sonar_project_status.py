@@ -14,12 +14,14 @@ from prettytable import PrettyTable
 info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 
 def create_table(table, field_name, rows):
-    tablename = table 
-    tablename = PrettyTable()
+    counter = 1
     for f, r in zip(field_name, rows):
+        tablename = table + str(counter)
+        tablename = PrettyTable()
         tablename.field_names = f
         tablename.add_row(r)
-    print(tablename)
+        counter += 1
+        print(tablename)
 
 def info_type_issues(issue):
   URL = 'http://172.17.0.1:9000/api/issues/search?pageSize100&severities='+ str(issue) +'&componentKeys=org.sonarqube:' + os.environ["APP_NAME"]
