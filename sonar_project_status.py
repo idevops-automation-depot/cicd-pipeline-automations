@@ -18,9 +18,10 @@ def create_table(table, field_name, rows, lengths):
     tablename = PrettyTable()
     print(field_name)
     tablename.field_names = field_name
-    for row in rows:
-        print(row)
-        tablename.add_row(row)
+    #for row in rows:
+    #    print(row)
+    print(rows)
+    tablename.add_row(rows)
     print(tablename)
 
 def info_type_issues(issue):
