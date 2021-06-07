@@ -18,7 +18,7 @@ def create_table(table, field_name, rows):
     table = PrettyTable()
     table.field_names = field_name
     print(field_name)
-    print("check this check this check thi" + rows[0])
+    print(rows)
     for row in rows:
         table.add_row(row)
     print(table)
@@ -35,7 +35,7 @@ def pull_keys(issue):
     for x in info_type_issues(issue):
         item = x.keys()
         head = list(item)
-        print("list afafafafafafafaf" + str(head))
+        print("list afafafafafafafaf" +head)
         num = (len(head))
         print(num)
         return head, num, issue
@@ -46,6 +46,7 @@ def pull_values(issue):
     for x in info_type_issues(issue):
         item_values = x.values()
         list1.append(list(item_values))
+    print(list1)    
     return list1
 
 for issue in info_type:
