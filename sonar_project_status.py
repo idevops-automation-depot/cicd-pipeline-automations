@@ -16,7 +16,7 @@ info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 def create_table(table, field_name, rows, lengths):
     tablename = table + str(lengths)
     tablename = PrettyTable()
-    print("check this")
+    print("print from create table")
     print(field_name)
     print(len(field_name))
     print(len(rows))
@@ -41,6 +41,8 @@ def pull_keys(issue):
         head = list(item)
         head.sort(key = len)
         num = len(head)
+        print("print from pull_keys")
+        print(head)
         print(num)
     return head, num, issue
         
@@ -51,6 +53,7 @@ def pull_values(issue):
         item_values = x.values()
         list1 = list(item_values)
         #list1.sort(key = len)
+        print("print from pull_values")
         print(list1)
         print(len(list1))
         return list1
