@@ -44,7 +44,7 @@ def pull_keys(issue):
         print("print from pull_keys")
         print(head)
         print(num)
-    return head, num, issue
+        return head, num, issue
         
 
 def pull_values(issue):
