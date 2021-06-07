@@ -49,7 +49,7 @@ def pull_values(issue):
     return list1
 
 for issue in info_type:
-    if pull_keys(issue) == None:
+    if pull_keys(str(issue)) == None:
         print("no " +issue +" issues found")
     else:
         print("\n" + issue + " Page Report")
