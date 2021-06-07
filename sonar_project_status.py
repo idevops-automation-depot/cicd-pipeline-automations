@@ -17,8 +17,8 @@ def create_table(table, field_name, rows):
     counter = 1
     for f, r in zip(field_name, rows):
         print(table)
-        print(len(f))
-        print(len(r))
+        #print(len(f))
+        #print(len(r))
         #tablename = table + str(counter)
         #tablename = PrettyTable()
         #tablename.field_names = f
@@ -66,4 +66,7 @@ for issue in info_type:
         type_of_issue = result1[1]
         result2 = pull_values(issue)
         rows = result2
+        for row in rows:
+            print(row)
+            print(len(row))
         create_table(type_of_issue,array_list, rows)
