@@ -46,7 +46,10 @@ def pull_values(issue):
     for x in info_type_issues(issue):
         item_values = x.values()
         list1.append(list(item_values))
-    print(len(list1))
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    print("thisone")
+    print(len(list1[0]))
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     return list1
 
 for issue in info_type:
