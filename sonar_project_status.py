@@ -34,6 +34,8 @@ def info_type_issues(issue):
 def pull_keys(issue):
     for x in info_type_issues(issue):
         item = x.keys()
+        print("printing items \n\n\n\n\n\n\n")
+        print(item)
         head = list(item)
         num = (len(head))
         return head, num, issue
