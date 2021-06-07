@@ -13,20 +13,13 @@ from prettytable import PrettyTable
 
 info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 
-def create_table(table, field_name, rows):
-    #print(table)
-    table = PrettyTable()
-    table.field_names = field_name
-    print(len(rows[0]))
-    print(len(rows[1]))
-    print("\n\n\n\n\n\n\n gotta check this one ")
-    print(len(rows[0]))
+def create_table(table, field_name, rows, lengths):
+    tablename = table + str(lengths)
+    tablename = PrettyTable()
+    tablename.field_names = field_name
     for row in rows:
-        print("give me the lenght of this array")
-        print(len(row))
-        print(row)
-        #table.add_row(row)
-    print(table)
+        tablename.add_row(row)
+    print(tablename)
 
 def info_type_issues(issue):
   URL = 'http://172.17.0.1:9000/api/issues/search?pageSize100&severities='+ str(issue) +'&componentKeys=org.sonarqube:' + os.environ["APP_NAME"]
@@ -40,7 +33,8 @@ def pull_keys(issue):
     for x in info_type_issues(issue):
         item = x.keys()
         head = list(item)
-        num = (len(head))
+        head.sort(key = len)
+        num = len(head)
         return head, num, issue
         break
 
@@ -49,7 +43,12 @@ def pull_values(issue):
     for x in info_type_issues(issue):
         item_values = x.values()
         list1.append(list(item_values))
+        list1.sort(key = len)
     return list1
+
+def save_value(value):
+    value = value
+    return value
 
 for issue in info_type:
     if pull_keys(issue) == None:
@@ -58,7 +57,9 @@ for issue in info_type:
         print("\n" + issue + " Page Report")
         result1 = pull_keys(issue)
         array_list = result1[0]
+        length_of_array = result1[1]
         type_of_issue = result1[2]
+        result12 = save_value(length_of_array)
         result2 = pull_values(issue)
         rows = result2
-        create_table(type_of_issue,array_list, rows)
+        create_table(type_of_issue,array_list, rows, length_of_array)
