@@ -36,7 +36,7 @@ def pull_keys(issue):
         head.sort(key = len)
         num = len(head)
         return head, num, issue
-        break
+        
 
 def pull_values(issue):
     list1 = []
