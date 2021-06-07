@@ -35,6 +35,7 @@ def pull_keys(issue):
         head = list(item)
         head.sort(key = len)
         num = len(head)
+        print(num)
         return head, num, issue
         
 
@@ -44,6 +45,7 @@ def pull_values(issue):
         item_values = x.values()
         list1.append(list(item_values))
         list1.sort(key = len)
+        print(len(list1))
     return list1
 
 def save_value(value):
