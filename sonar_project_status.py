@@ -37,6 +37,8 @@ def info_type_issues(issue):
 def pull_keys(issue):
     head = []
     for x in info_type_issues(issue):
+        print("item with no remove the disct")
+        print(x)
         item = x.keys()
         head.append(list(item))
         head.sort(key = len)
