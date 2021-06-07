@@ -19,12 +19,12 @@ def create_table(table, field_name, rows):
         print(table)
         #print(len(f))
         #print(len(r))
-        #tablename = table + str(counter)
-        #tablename = PrettyTable()
-        #tablename.field_names = f
-        #tablename.add_row(r)
-        #counter += 1
-        #print(tablename)
+        tablename = table + str(counter)
+        tablename = PrettyTable()
+        tablename.field_names = f
+        tablename.add_row(r)
+        counter += 1
+        print(tablename)
 
 def info_type_issues(issue):
   URL = 'http://172.17.0.1:9000/api/issues/search?pageSize100&severities='+ str(issue) +'&componentKeys=org.sonarqube:' + os.environ["APP_NAME"]
@@ -68,9 +68,9 @@ for issue in info_type:
         result2 = pull_values(issue)
         rows = result2
         for a, r in zip(array_list, rows ):
-            print(len(a))
-            print(len(r))
-            print(a)
-            print(r)
-            print("\n\n\n")
+            #print(len(a))
+            #print(len(r))
+            #print(a)
+            #print(r)
+            #print("\n\n\n")
         create_table(type_of_issue,array_list, rows)
