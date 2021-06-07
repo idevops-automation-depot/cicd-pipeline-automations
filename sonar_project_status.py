@@ -17,8 +17,6 @@ def create_table(table, field_name, rows):
     counter = 1
     for f, r in zip(field_name, rows):
         print(table)
-        #print(len(f))
-        #print(len(r))
         tablename = table + str(counter)
         tablename = PrettyTable()
         tablename.field_names = f
@@ -37,8 +35,6 @@ def info_type_issues(issue):
 def pull_keys(issue):
     head = []
     for x in info_type_issues(issue):
-        print("item with no remove the disct")
-        print(x)
         item = x.keys()
         head.append(list(item))
         num = len(head)
