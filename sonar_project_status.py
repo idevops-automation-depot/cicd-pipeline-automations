@@ -13,18 +13,12 @@ from prettytable import PrettyTable
 
 info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 
-def create_table(table, field_name, rows, lengths):
-    tablename = table + str(lengths)
+def create_table(table, field_name, rows):
+     tablename = table 
     tablename = PrettyTable()
-    print("print from create table")
-    print(field_name)
-    print(len(field_name))
-    print(len(rows))
-    tablename.field_names = field_name
-    #for row in rows:
-    #    print(row)
-    #print(rows)
-    tablename.add_row(rows)
+    for f, r in zip(field_name, rows):
+        tablename.field_names = f
+        tablename.add_row(r)
     print(tablename)
 
 def info_type_issues(issue):
@@ -36,27 +30,21 @@ def info_type_issues(issue):
   return issues
 
 def pull_keys(issue):
+    head = []
     for x in info_type_issues(issue):
         item = x.keys()
-        head = list(item)
+        head.append(list(item))
         head.sort(key = len)
         num = len(head)
-        print("print from pull_keys")
-        print(head)
-        print(num)
-        return head, num, issue
+    return head,  issue
         
 
 def pull_values(issue):
     list1 = []
     for x in info_type_issues(issue):
         item_values = x.values()
-        list1 = list(item_values)
-        #list1.sort(key = len)
-        print("print from pull_values")
-        print(list1)
-        print(len(list1))
-        return list1
+        list1.append(list(item_values))
+    return list1
 
 def save_value(value):
     value = value
@@ -64,14 +52,13 @@ def save_value(value):
 
 for issue in info_type:
     if pull_keys(issue) == None:
-        print("no " +issue +" issues found")
+        print("no " + issue +" issues found")
     else:
         print("\n" + issue + " Page Report")
+        
         result1 = pull_keys(issue)
         array_list = result1[0]
-        length_of_array = result1[1]
-        type_of_issue = result1[2]
-        result12 = save_value(length_of_array)
+        type_of_issue = result1[1]
         result2 = pull_values(issue)
         rows = result2
-        create_table(type_of_issue,array_list, rows, length_of_array)
+        create_table(type_of_issue,array_list, rows)
