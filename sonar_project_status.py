@@ -14,7 +14,7 @@ from prettytable import PrettyTable
 info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 
 def create_table(table, field_name, rows):
-     tablename = table 
+    tablename = table 
     tablename = PrettyTable()
     for f, r in zip(field_name, rows):
         tablename.field_names = f
