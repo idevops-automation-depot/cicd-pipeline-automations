@@ -20,7 +20,7 @@ def create_table(table, field_name, rows, lengths):
     tablename.field_names = field_name
     #for row in rows:
     #    print(row)
-    print(rows)
+    #print(rows)
     tablename.add_row(rows)
     print(tablename)
 
@@ -46,10 +46,11 @@ def pull_values(issue):
     list1 = []
     for x in info_type_issues(issue):
         item_values = x.values()
-        list1.append(list(item_values))
-        list1.sort(key = len)
+        list1 = list(item_values)
+        #list1.sort(key = len)
+        print(list1)
         print(len(list1))
-    return list1
+        return list1
 
 def save_value(value):
     value = value
