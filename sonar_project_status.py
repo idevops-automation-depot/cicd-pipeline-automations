@@ -63,7 +63,7 @@ for issue in info_type:
         type_of_issue = result1[1]
         result2 = pull_values(issue)
         rows = result2
-        for a, r in zip(array_list, rows ):
+        #for a, r in zip(array_list, rows ):
             #print(len(a))
             #print(len(r))
             #print(a)
