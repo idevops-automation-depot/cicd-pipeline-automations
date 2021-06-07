@@ -41,7 +41,6 @@ def pull_keys(issue):
         print(x)
         item = x.keys()
         head.append(list(item))
-        head.sort(key = len)
         num = len(head)
     return head,  issue
         
