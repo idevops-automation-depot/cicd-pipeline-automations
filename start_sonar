@@ -11,12 +11,6 @@ else
     echo "Sonar already running, check responding."
 fi
 
-
-
-
-
-
-
 attempt_counter=0
 max_attempts=25
 
@@ -36,8 +30,6 @@ echo "Wait for Sonar Ready Status"
 
 current_status=`curl http://172.17.0.1:9000 --silent | grep "window.serverStatus = 'UP'"`
 echo "current_status: $current_status"
-
-
 
 until [ "$current_status" == "    window.serverStatus = 'UP';" ]; do
     current_status=`curl http://172.17.0.1:9000 --silent | grep "window.serverStatus = 'UP'"`

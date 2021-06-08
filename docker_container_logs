@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set +x
-
 CONTAINER=$1
 
 docker logs -t $CONTAINER

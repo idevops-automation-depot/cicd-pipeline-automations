@@ -1,7 +1,6 @@
 #!/usr/bin/
 set +x
+SERVICE_NAME=$1
 
-${SERVICE_NAME}=$1
-
-kubectl delete service $1 --kubeconfig=./kubeconfig
+kubectl delete service ${SERVICE_NAME} --kubeconfig=./kubeconfig
 

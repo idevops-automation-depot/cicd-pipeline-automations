@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set +x
 
-# 1st argument is the container name, and the 2nd argument is the new container name
+# 1st argument container orignal name, 2nd argument container name
 
 CONTAINER=$1
 NEW_CONTAINER_NAME=$2

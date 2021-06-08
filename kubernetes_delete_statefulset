@@ -1,6 +1,5 @@
 #!/usr/bin/
 set +x
+STATEFULSET_NAME=$1
 
-${STATEFULSET_NAME}=$1
-
-kubectl delete statefulsets $1 --kubeconfig=./kubeconfig
+kubectl delete statefulsets ${STATEFULSET_NAME} --kubeconfig=./kubeconfig

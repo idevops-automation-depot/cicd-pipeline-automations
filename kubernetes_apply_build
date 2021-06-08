@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 set +x
-
 APP_NAME=$1
 filename=$2
 APP_NAMESPACE=$3
 
 cd $APPLICATION_PATH
 
-kubectl apply -n ${APP_NAMESPACE} -f $filename --kubeconfig=../kubeconfig
+kubectl apply -n ${APP_NAMESPACE} -f ${filename} --kubeconfig=../kubeconfig

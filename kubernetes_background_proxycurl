@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set +x
 APP_NAME=$1
+
 tmux new-session -d -s ${APP_NAME} 'kubectl proxy --kubeconfig=./kubeconfig'
 sleep 10
 yes_running=$(tmux ls | grep ${APP_NAME})

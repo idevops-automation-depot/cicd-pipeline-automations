@@ -1,6 +1,5 @@
 #!/usr/bin/
 set +x
+APP_NAMESPACE=$1
 
-${APP_NAMESPACE}=$1
-
-kubectl logs $1 --kubeconfig=./kubeconfig
+kubectl logs ${APP_NAMESPACE} --kubeconfig=./kubeconfig

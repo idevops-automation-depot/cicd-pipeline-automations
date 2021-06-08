@@ -1,5 +1,3 @@
-
-
 #!/usr/bin/env python
 from typing import ItemsView
 import requests 
@@ -8,8 +6,6 @@ import json
 import os
 from requests.auth import HTTPBasicAuth
 from prettytable import PrettyTable
-
-
 
 info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 
@@ -38,9 +34,8 @@ def pull_keys(issue):
         item = x.keys()
         head.append(list(item))
         num = len(head)
-    return head,  issue
+    return head, issue
         
-
 def pull_values(issue):
     list1 = []
     for x in info_type_issues(issue):
@@ -57,16 +52,9 @@ for issue in info_type:
         print("no " + issue +" issues found")
     else:
         print("\n" + issue + " Page Report")
-        
         result1 = pull_keys(issue)
         array_list = result1[0]
         type_of_issue = result1[1]
         result2 = pull_values(issue)
         rows = result2
-        #for a, r in zip(array_list, rows ):
-            #print(len(a))
-            #print(len(r))
-            #print(a)
-            #print(r)
-            #print("\n\n\n")
         create_table(type_of_issue,array_list, rows)

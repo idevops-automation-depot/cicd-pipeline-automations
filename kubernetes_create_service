@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 set +x
-
-
 APP_NAME=$1
 SERVICE_TYPE=$2
 APP_NAMESPACE=$3

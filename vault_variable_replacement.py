@@ -3,6 +3,7 @@ import os
 import json
 import os
 import urllib3
+
 http = urllib3.PoolManager()
 #os.environ["VAULT_DNS"] = "http://vault.idevops.io/v1/kv/data/"
 r = http.request('GET','{vault_dns}{vault_path}'.format(vault_dns=os.environ["VAULT_DNS"],vault_path=os.environ["VAULT_PATH"]),headers={"X-Vault-Token": os.environ['VAULT_TOKEN']})

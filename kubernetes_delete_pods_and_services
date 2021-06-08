@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set +x
-
 LABEL_KEY=$1
 LABEL_VALUE=$2
 APP_NAMESPACE=$3

@@ -12,7 +12,6 @@ import boto
 # os.environ['aws_access_key_id']
 # os.environ['aws secret_access_key']
 
-
 conn = boto.connect_route53(os.environ['aws_access_key_id'], os.environ['aws secret_access_key']) #establish connection to R53, pass in keys)
 zone = conn.get_zone(os.environ['domainName']) #Get zone for domain in question
 
