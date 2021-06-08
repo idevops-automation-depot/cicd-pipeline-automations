@@ -1,0 +1,51 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idevops-azdo-runner
+  labels:
+    app: idevops-azdo-runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: idevops-azdo-runner
+  template:
+    metadata:
+      labels:
+        app: idevops-azdo-runner
+    spec:
+      containers:
+      - name: idevops-azdo-runner
+        image: idevopsio/idevops-azdo-runner:v1
+        volumeMounts:
+          - mountPath: /var/run/docker.sock
+            name: docker-volume
+        env:
+          - name: AZP_URL
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_URL
+          - name: AZP_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_TOKEN
+          - name: AZP_POOL
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_POOL
+          - name: AZP_AGENT_NAME
+            valueFrom:
+              secretKeyRef:
+                name: azdorunner
+                key: AZP_AGENT_NAME
+        ports:
+        - containerPort: 80
+      volumes:
+        - hostPath:
+            path: /var/run/docker.sock
+            type: ""
+          name: docker-volume

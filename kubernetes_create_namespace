@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 set +x
+APP_NAMESPACE=$1
+AZ_APP_URL=$2
+AZ_CERT=$3
+AZ_TENANT=$4
+
+
+az login --service-principal -u ${AZ_APP_URL} -p ${AZ_CERT} --tenant ${AZ_TENANT}
 
 check_if_namespace_exists=`kubectl get namespaces --kubeconfig=./kubeconfig | grep ${APP_NAMESPACE} | grep -v grep`
 if [ -z "${check_if_namespace_exists}" ]; then

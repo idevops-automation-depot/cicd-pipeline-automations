@@ -1,4 +1,7 @@
+
+
 #!/usr/bin/env python
+from typing import ItemsView
 import requests 
 import pprint
 import json
@@ -7,39 +10,63 @@ from requests.auth import HTTPBasicAuth
 from prettytable import PrettyTable
 
 
-table = PrettyTable()
-# must be one of: [INFO, MINOR, MAJOR, CRITICAL, BLOCKER]
-
 
 info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 
-for info_type_items in info_type:
-    URL = 'http://172.17.0.1:9000/api/issues/search?pageSize100&severities='+ info_type_items +'&componentKeys=org.sonarqube:' + os.environ["APP_NAME"]
+def create_table(table, field_name, rows):
+    counter = 1
+    for f, r in zip(field_name, rows):
+        print(table)
+        tablename = table + str(counter)
+        tablename = PrettyTable()
+        tablename.field_names = f
+        tablename.add_row(r)
+        counter += 1
+        print(tablename)
 
-    get_request = requests.get(URL, auth=HTTPBasicAuth('admin','admin'))
+def info_type_issues(issue):
+  URL = 'http://172.17.0.1:9000/api/issues/search?pageSize100&severities='+ str(issue) +'&componentKeys=org.sonarqube:' + os.environ["APP_NAME"]
+  get_request = requests.get(URL, auth=HTTPBasicAuth('admin','admin'))
+  data = get_request.json()
+  #pprint.pprint(data)
+  issues = data["issues"]
+  return issues
 
-    data = get_request.json()
-
-#pprint.pprint(data)
-
-    issues = data["issues"]
-
-    for x in issues:
+def pull_keys(issue):
+    head = []
+    for x in info_type_issues(issue):
         item = x.keys()
-        header = (list(item))
-        break
-
-    listfoo = []
-    for y in issues:
-        item2 = y.values()
-        listfoo.append(list(item2))
+        head.append(list(item))
+        num = len(head)
+    return head,  issue
         
 
+def pull_values(issue):
+    list1 = []
+    for x in info_type_issues(issue):
+        item_values = x.values()
+        list1.append(list(item_values))
+    return list1
 
-    #print (listfoo)
-    print("total number of items " + str(len(listfoo)) + " for " + info_type_items )
-    table.field_names = header 
-    for z in listfoo:
-        table.add_row(z)
-        listfoo = []
-    print(table)
+def save_value(value):
+    value = value
+    return value
+
+for issue in info_type:
+    if pull_keys(issue) == None:
+        print("no " + issue +" issues found")
+    else:
+        print("\n" + issue + " Page Report")
+        
+        result1 = pull_keys(issue)
+        array_list = result1[0]
+        type_of_issue = result1[1]
+        result2 = pull_values(issue)
+        rows = result2
+        #for a, r in zip(array_list, rows ):
+            #print(len(a))
+            #print(len(r))
+            #print(a)
+            #print(r)
+            #print("\n\n\n")
+        create_table(type_of_issue,array_list, rows)
