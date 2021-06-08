@@ -26,6 +26,7 @@ cat sonar-project.properties
 
 python -m pip install -U prettytable
 
+# this is a dummy container to mount volume on, only use if mounting is failing 
 docker run -d --rm --name dummy2 -v sonarvolume:/root/src alpine tail -f /dev/null
 docker cp /azp/_work/r1/a/ dummy2:/root/src
 docker cp /azp/_work/r1/a/sonar-project.properties  dummy2:/root/src/sonar-project.properties
@@ -36,7 +37,7 @@ python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonarqube_c
 
 echo "Execute Scan, please ensure sonar-project.properties is set properly."
 #relies on sonar-project.properties in root project folder
-
+#if mounting works you will change -v to where you created the sonar-project.properties and the code you wanna scan
 docker run -t --network=host  -v sonarvolume:/root/src/ zaquestion/sonarqube-scanner 
 
 echo "Parse and Display Issues from Sonar Cuber Report"

@@ -31,25 +31,23 @@ def info_type_issues(issue):
   issues = data["issues"]
   return issues
 
+# iterate through the json form info_type_issues
 def pull_keys(issue):
-    head = []
+    head = [] # need a list to return
     for x in info_type_issues(issue):
-        item = x.keys()
-        head.append(list(item))
+        item = x.keys() # pull only the keys 
+        head.append(list(item)) # array list to the list head, need(list(item)) or else it would be (dist key(key, key, key))
         num = len(head)
     return head, issue
-        
+# iterate through the json form info_type_issues
 def pull_values(issue):
-    list1 = []
+    list1 = [] # need a list to return 
     for x in info_type_issues(issue):
-        item_values = x.values()
-        list1.append(list(item_values))
+        item_values = x.values() # pull only the values 
+        list1.append(list(item_values)) # array list to the list head, need(list(item)) or else it would be (dist value(value, value, value))
     return list1
 
-def save_value(value):
-    value = value
-    return value
-
+#if there is no data to print, then it would print which issue page and that no iddues found 
 for issue in info_type:
     if pull_keys(issue) == None:
         print("no " + issue +" issues found")

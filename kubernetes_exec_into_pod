@@ -4,4 +4,4 @@ APP_NAMESPACE=$1
 POD_NAME=$2
 
 
-kubectl exec -it -n $APP_NAMESPACE $POD_NAME bash --kubeconfig=./kubeconfig
+kubectl exec -it -n ${APP_NAMESPACE} ${POD_NAME} bash --kubeconfig=./kubeconfig

@@ -4,7 +4,7 @@ POD_NAME=$1
 APP_NAMESPACE=$2
 
 if [ $# -eq 1 ]; then
-    kubectl get pods | awk -v var="$POD_NAME" 'NR==1; $0 ~ var' --kubeconfig=./kubeconfig
+    kubectl get pods | awk -v var="${POD_NAME}" 'NR==1; $0 ~ var' --kubeconfig=./kubeconfig
 else
-    kubectl get pods -n $APP_NAMESPACE | awk -v var="$POD_NAME" 'NR==1; $0 ~ var' --kubeconfig=./kubeconfig
+    kubectl get pods -n ${APP_NAMESPACE} | awk -v var="${POD_NAME}" 'NR==1; $0 ~ var' --kubeconfig=./kubeconfig
 fi

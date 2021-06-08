@@ -2,4 +2,4 @@
 set +x
 CONTAINER=$1
 
-docker rm $CONTAINER
+docker rm ${CONTAINER}

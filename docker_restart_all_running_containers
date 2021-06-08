@@ -5,7 +5,7 @@ set +x
 TIME=$1
 
 if [ $# -eq 1 ]; then
-    docker restart -t $TIME $(docker ps -q)
+    docker restart -t ${TIME} $(docker ps -q)
 else
     docker restart $(docker ps -q)
 fi

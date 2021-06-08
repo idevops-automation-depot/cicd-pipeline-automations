@@ -2,5 +2,5 @@
 set +x
 CONTAINER=$1
 
-docker stop $CONTAINER
-docker rm $CONTAINER
+docker stop ${CONTAINER}
+docker rm ${CONTAINER}

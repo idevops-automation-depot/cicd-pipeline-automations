@@ -6,7 +6,7 @@ CONTAINER=$1
 TIME=$2
 
 if [ $# -eq 1 ]; then
-    docker restart $CONTAINER
+    docker restart ${CONTAINER}
 else
-    docker restart -t $TIME $CONTAINER
+    docker restart -t ${TIME} ${CONTAINER}
 fi
