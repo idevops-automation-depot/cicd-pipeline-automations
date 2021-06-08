@@ -9,17 +9,20 @@ from prettytable import PrettyTable
 
 info_type = ['MINOR', 'MAJOR', 'CRITICAL', 'BLOCKER']
 
+# creats table by adding filed names, and row while iterating the list 
 def create_table(table, field_name, rows):
     counter = 1
     for f, r in zip(field_name, rows):
         print(table)
-        tablename = table + str(counter)
+        tablename = table + str(counter) #due to reports being different sizes, made it so it will just create a new table for each info for the time being 
         tablename = PrettyTable()
         tablename.field_names = f
         tablename.add_row(r)
         counter += 1
         print(tablename)
 
+
+# pulls info with api, and specifying specifically which data we want with the tag
 def info_type_issues(issue):
   URL = 'http://172.17.0.1:9000/api/issues/search?pageSize100&severities='+ str(issue) +'&componentKeys=org.sonarqube:' + os.environ["APP_NAME"]
   get_request = requests.get(URL, auth=HTTPBasicAuth('admin','admin'))
