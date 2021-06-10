@@ -14,4 +14,4 @@ else
 fi
 # export path and install requirements
 export PATH=/root/miniconda3/bin:${PATH}
-pip install -r ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/requirements.txt
+pip install -r ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/utilities/requirements.txt
