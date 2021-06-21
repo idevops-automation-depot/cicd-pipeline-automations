@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set +x
+
+# Restarts all currently running containers, You can add the seconds to wait for stop before killing the container, as an argument
+TIME=$1
+
+if [ $# -eq 1 ]; then
+    docker restart -t ${TIME} $(docker ps -q)
+else
+    docker restart $(docker ps -q)
+fi

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set +x
+APP_NAMESPACE=$1
+SCALE_TO_AMOUNT=$2
+YAML=$3
+
+
+kubectl scale -n ${APP_NAMESPACE} --replicas=${SCALE_TO_AMOUNT} -f ${YAML} --kubeconfig=./kubeconfig

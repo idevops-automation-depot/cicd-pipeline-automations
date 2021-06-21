@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set +x
+IMAGE=$1
+
+docker history -H ${IMAGE}

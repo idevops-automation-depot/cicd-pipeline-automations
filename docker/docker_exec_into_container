@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set +x
+CONTAINER=$1
+
+docker exec -it $(docker container ls  | grep ${CONTAINER} | awk '{print $1}') sh

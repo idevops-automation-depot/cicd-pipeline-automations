@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set +x
+APP_NAME=$1
+PATH=$2
+SERVICE_TYPE=$3
+PORT=$4
+SECRET=$5
+
+kubectl create ingress ${APP_NAME} --rule="${PATH}=${SERVICE_TYPE}:${PORT},tlS=${SECRET}" --kubeconfig=./kubeconfig

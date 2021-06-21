@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set +x
+
+is_sonar_running=`docker ps | grep "sonarqube"`
+
+if [ -z "$is_sonar_running" ]; then
+    echo "Is Sonar Running: ${is_sonar_running}"
+    echo "Sonar no running start sonar."
+    docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+else
+    echo "Sonar already running, check responding."
+fi
+
+attempt_counter=0
+max_attempts=25
+
+until $(curl --output /dev/null --silent --head --fail http://172.17.0.1:9000); do
+    if [ ${attempt_counter} -eq ${max_attempts} ];then
+      echo "Max attempts reached"
+      exit 1
+    fi
+
+    printf '.'
+    attempt_counter=$(($attempt_counter+1))
+    sleep 5
+done
+
+echo "Sonar Cube is Up and Ready."
+echo "Wait for Sonar Ready Status"
+
+current_status=`curl http://172.17.0.1:9000 --silent | grep "window.serverStatus = 'UP'"`
+echo "current_status: $current_status"
+
+until [ "$current_status" == "    window.serverStatus = 'UP';" ]; do
+    current_status=`curl http://172.17.0.1:9000 --silent | grep "window.serverStatus = 'UP'"`
+    echo "current_status: $current_status"
+
+    if [ ${attempt_counter} -eq ${max_attempts} ];then
+      echo "Max attempts reached"
+      exit 1
+    fi
+
+    printf '.'
+    attempt_counter=$(($attempt_counter+1))
+    sleep 5
+done
+
+curl http://172.17.0.1:9000
+echo "Sonar Cube is up and running and reporting started."
+

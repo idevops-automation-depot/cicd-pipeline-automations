@@ -1,0 +1,6 @@
+#!/usr/bin/
+set +x
+POD_NAME=$1
+
+kubectl get pod ${POD_NAME} -o yaml --all-namespaces --kubeconfig=./kubeconfig
+

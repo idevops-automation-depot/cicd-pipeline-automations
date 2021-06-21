@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set +x
+DOCKER_IMAGE_NAME=$1
+
+docker push ${DOCKER_IMAGE_NAME}

@@ -1,0 +1,5 @@
+#!/usr/bin/
+set +x
+YAML_NAME=$1
+
+kubectl delete -f ${YAML_NAME} --kubeconfig=./kubeconfig

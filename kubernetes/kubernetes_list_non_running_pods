@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set +x
+
+kubectl get pods -A --no-headers | grep -v Running | grep -v Completed --kubeconfig=./kubeconfig

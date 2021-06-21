@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set +x
+
+# Disconnect a container from a network - forced disconnection
+# 1st argument is the network, and 2nd argument is the container
+NETWORK_NAME=$1
+CONTAINER=$2
+
+docker network disconnect -f ${NETWORK_NAME} ${CONTAINER}

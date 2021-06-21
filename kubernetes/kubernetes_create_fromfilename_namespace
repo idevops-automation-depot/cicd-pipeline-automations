@@ -1,0 +1,6 @@
+#!/usr/bin/
+set +x
+APP_NAMESPACE=$1
+FILENAME=$2
+
+kubectl create -n ${APP_NAMESPACE} -f ${FILENAME} --kubeconfig=./kubeconfig

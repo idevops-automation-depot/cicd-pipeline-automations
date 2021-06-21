@@ -1,0 +1,8 @@
+#!/usr/bin/
+set +x
+CLUSTERROLE_NAME=$1
+RESOURCE_TYPE=$2
+RESOURCEGROUP_NAME=$3
+verb=$4
+
+kubectl create clusterrole ${CLUSTERROLE_NAME} --verb=${$verb} --resource=${RESOURCE_TYPE} --resource-name=${RESOURCEGROUP_NAME} --kubeconfig=./kubeconfig

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set +x
+SERVICE_NAME=$1
+APP_NAMESPACE=$2
+
+if [ $# -eq 1 ]; then
+    kubectl get svc | awk -v var="${SERVICE_NAME}" 'NR==1; $0 ~ var' --kubeconfig=./kubeconfig
+else
+    kubectl get svc -n ${APP_NAMESPACE} | awk -v var="${SERVICE_NAME}" 'NR==1; $0 ~ var' --kubeconfig=./kubeconfig
+fi

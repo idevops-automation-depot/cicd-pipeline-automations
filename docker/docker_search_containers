@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set +x
+SEARCH_FOR_CONTAINER=$1
+
+docker ps -a | awk -v var="${SEARCH_FOR_CONTAINER}" 'NR==1; $0 ~ var'
