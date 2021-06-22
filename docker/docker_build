@@ -8,9 +8,7 @@ cd ${APPLICATION_PATH}
 
 # Build Test and Main Image
 echo ${DOCKER_IMAGE_NAME}
-echo ${DOCKER_IMAGE_NAME}
-echo ${DOCKER_IMAGE_NAME}
 
 #docker build -t test .
-#docker build -t $DOCKER_IMAGE_NAME .
-#cd ${APPLICATION_PATH}
+docker build -t $DOCKER_IMAGE_NAME .
+cd ${APPLICATION_PATH}
