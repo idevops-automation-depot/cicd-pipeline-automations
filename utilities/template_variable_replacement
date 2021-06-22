@@ -2,7 +2,7 @@
 set +x
 
 export PATH=/root/miniconda3/bin:${PATH}
-python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/utilities/vault_variable_replacement.py
+python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops-automation-depot_cicd-pipeline-automations/utilities/vault_variable_replacement.py
 
 
 
