@@ -24,7 +24,10 @@ Please take a moment to review iDevOps.io one stop automation depot for CICD pip
 | Script Name | Description | Required Arguments | Additional Arguments<br /> & Notes |
 | ----------- | ----------- | ------------------ | ---------------------------------- |
 | anchore_inline_scan | Pulls the specified docker image and anchore scans it | `DOCKER_IMAGE_NAME` |
+| az_login_service_prinicpal | azure login to avoid to entering verification code by hand everytime | `AZ_APP_URL`, `AZ_CERT`, `AZ_TENANT` |
+| azure_variable_replacement.py | Replaces variables in the templated yaml: `/manifests/deployment.template.yml` and creates a `deployment.yml`. | | Syntax for variables in the template are formatted like: `-=APP_NAME=-`, and replaced with the Azure value of `APP_NAME`. Azure pipeline variables `VAULT_DNS`, `VAULT_PATH`, and `VAULT_TOKEN` must be set up ahead of time for these scripts to function.|
 | create_kubernetes_secret | Creates Kubernetes secrets from a JSON argument. The secret name defaulting to APP_NAME | `keys`, `APP_NAME` | The `keys` argument is passed in JSON format, with single quotes. ex: `create_kubernetes_secret '{ "APP_NAME":"Example", "APP_NAMESPACE":"production", "APP_PORT":"80" }' APP_NAME`
+| docker_az_login | docker login for azure  | `DOCKER_USERNAME` , `DOCKER_PASSWORD`,`DOCKER_REGISTRY_URL`|  |
 | docker_build | Builds a test and main Docker Image | `DOCKER_IMAGE_NAME` | `APPLICATION_PATH` |
 | docker_connect<br />_container_to_network | Connects a container to a network | `NETWORK_NAME`, `CONTAINER` | `IP` is an additional argument you can pass. Referenced here in the [docker connect command](https://docs.docker.com/engine/reference/commandline/network_connect/) |
 | docker_container_logs | Shows the logs of a container | `CONTAINER` |
@@ -96,6 +99,7 @@ Please take a moment to review iDevOps.io one stop automation depot for CICD pip
 | sonarqube_create_project.py | Creates a project in SonarQube | | `APP_NAME` |
 | sonar_project_status.py | Uses API/issues to get a report from SonarQube | | `APP_NAME` |
 | source_vault_secrets | Grabs variables in Vault and `export`s them as environment variables | | `SYSTEM_DEFAULT`<br />`WORKINGDIRECTORY` <br /> This script is also used to `export` extra variables for use in the pipeline. |
+| source_azure_runner_secrets | Grabs variables in Azure and `export`s them as environment variables | | `SYSTEM_DEFAULT`<br />`WORKINGDIRECTORY` <br /> This script is also used to `export` extra variables for use in the pipeline. |
 | vault_to_env.py | The script used in `source_vault_secrets` to grab variables | | Azure pipeline variables `VAULT_DNS`, `VAULT_PATH`, and `VAULT_TOKEN` must be set up ahead of time for these scripts to function.|
 | vault_variable_replacement.py | Replaces variables in the templated yaml: `/manifests/deployment.template.yml` and creates a `deployment.yml`. | | Syntax for variables in the template are formatted like: `-=APP_NAME=-`, and replaced with the Vault value of `APP_NAME`. Azure pipeline variables `VAULT_DNS`, `VAULT_PATH`, and `VAULT_TOKEN` must be set up ahead of time for these scripts to function.|
 | template_variable_replacement | Used to call the `vault_variable_replacement.py` | |`SYSTEM_DEFAULT`<br />`WORKINGDIRECTORY` |
