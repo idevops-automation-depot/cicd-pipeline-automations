@@ -33,7 +33,7 @@ docker cp /azp/_work/r1/a/sonar-project.properties  dummy2:/root/src/sonar-proje
 docker stop dummy2
 
 echo "Create Project"
-python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonar/sonarqube_create_project.py
+python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops-automation-depot_cicd-pipeline-automations/sonar/sonarqube_create_project.py
 
 echo "Execute Scan, please ensure sonar-project.properties is set properly."
 #relies on sonar-project.properties in root project folder
@@ -41,7 +41,7 @@ echo "Execute Scan, please ensure sonar-project.properties is set properly."
 docker run -t --network=host  -v sonarvolume:/root/src/ zaquestion/sonarqube-scanner 
 
 echo "Parse and Display Issues from Sonar Cuber Report"
-python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops_pipeline_libraries/sonar/sonar_project_status.py
+python ${SYSTEM_DEFAULTWORKINGDIRECTORY}/_idevops-automation-depot_cicd-pipeline-automations/sonar/sonar_project_status.py
 
 
 

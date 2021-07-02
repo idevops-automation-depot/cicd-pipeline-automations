@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set +x
+DOCKER_USERNAME=$1
+DOCKER_PASSWORD=$2
+DOCKER_REGISTRY_URL=$3
+
+docker login ${DOCKER_REGISTRY_URL} --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}

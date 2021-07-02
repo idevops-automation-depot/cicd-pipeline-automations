@@ -1,6 +1,6 @@
-# [iDevOps.io](https://idevops.io/) Public Pipeline Library
+# cicd-pipeline-automations
+Please take a moment to review iDevOps.io one stop automation depot for CICD pipelines. Our goal is to create quick production grade solutions for all of the popular CI tools. Allowing your business to have functionally production ready best of practice DevOps pipelines within minutes.
 
-This library was created to expedite the deployment of CI/CD oriented environments in a highly customizable manner. These libraries will allow you to create various tasks and processes based upon your specific needs in a way that has been tested and confirmed functional to eliminate guesswork and abstract you from the problems of implementation.
 
 ## How to use
 - Guide
